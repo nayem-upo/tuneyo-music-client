@@ -19,9 +19,20 @@ const Login = () => {
         userLogin(email, password)
             .then((userCredential) => {
                 const user = userCredential.user;
+                const saveUser = { name: user.displayName, email: user.email, role: "user" }
+                fetch('http://localhost:5000/users', {
+                    method: 'POST',
+                    headers: {
+                        "content-type": "application/json"
+                    },
+                    body: JSON.stringify(saveUser)
+                })
+                    .then(res => res.json())
+                    .then(data => {
+                        navigate(from, { replace: true });
+                    })
                 setError("")
                 setSuccess("Login Successfull")
-                navigate(from, { replace: true });
             })
             .catch((error) => {
                 const errorCode = error.code;
@@ -39,7 +50,18 @@ const Login = () => {
                 setError("")
                 setSuccess("Login Successfull")
                 const user = result.user;
-                navigate(from, { replace: true });
+                const saveUser = { name: user.displayName, email: user.email, role: "user" }
+                fetch('http://localhost:5000/users', {
+                    method: 'POST',
+                    headers: {
+                        "content-type": "application/json"
+                    },
+                    body: JSON.stringify(saveUser)
+                })
+                    .then(res => res.json())
+                    .then(data => {
+                        navigate(from, { replace: true });
+                    })
             })
             .catch((error) => {
                 const errorCode = error.code;
@@ -48,7 +70,6 @@ const Login = () => {
                 setSuccess("")
                 setError(errorMessage)
                 const credential = GoogleAuthProvider.credentialFromError(error);
-                // ...
             });
     }
 

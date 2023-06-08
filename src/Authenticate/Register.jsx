@@ -27,13 +27,19 @@ const Register = () => {
                 const user = userCredential.user;
                 console.log(user);
                 updateProfile(auth.currentUser, {
-                    displayName: name, photoURL: photo
+                    displayName: name, photoURL: photo, role: "user"
                 }).then(() => {
-                    // Profile updated!
-                    // ...
+                    const saveUser = { name: name, email: email, role: "user" }
+                    fetch('http://localhost:5000/users', {
+                        method: 'POST',
+                        headers: {
+                            "content-type": "application/json"
+                        },
+                        body: JSON.stringify(saveUser)
+                    })
+                        .then(res => res.json())
+                        .then(data => { })
                 }).catch((error) => {
-                    // An error occurred
-                    // ...
                 });
             })
             .catch((error) => {
@@ -53,7 +59,18 @@ const Register = () => {
                 setError("")
                 setSuccess("Login Successfull")
                 const user = result.user;
-                navigate(from, { replace: true });
+                const saveUser = { name: user.displayName, email: user.email, role: "user" }
+                fetch('http://localhost:5000/users', {
+                    method: 'POST',
+                    headers: {
+                        "content-type": "application/json"
+                    },
+                    body: JSON.stringify(saveUser)
+                })
+                    .then(res => res.json())
+                    .then(data => {
+                        navigate(from, { replace: true });
+                    })
             })
             .catch((error) => {
                 const errorCode = error.code;
@@ -66,7 +83,7 @@ const Register = () => {
     }
 
     return (
-        <div className='flex justify-center my-10 gap-10'>
+        <div className='flex justify-center pb-20 pt-32 gap-10'>
             <img className='shadow-md rounded w-[400px] object-cover' src="https://www.steinway.com/.imaging/default/dam/Special-Pianos/pops/pops_builder/pops_rendering/191223-POPS.1760.png/jcr:content.jpg" alt="" />
             <form className='flex gap-3 flex-col' onSubmit={handleSubmit(handleRegister)}>
                 <p className='text-[#EA4C24] text-3xl font-semibold'>Create An Account!</p>
