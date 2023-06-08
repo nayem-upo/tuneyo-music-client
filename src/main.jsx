@@ -1,6 +1,5 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
-import App from './App.jsx'
 import './index.css'
 import {
   createBrowserRouter,
@@ -13,6 +12,8 @@ import Login from './Authenticate/Login.jsx';
 import Register from './Authenticate/Register.jsx';
 import AuthProvider from './Authenticate/AuthProvider.jsx';
 import Instructors from './InstructorsPage/Instructors.jsx';
+import Classes from './ClassesPage/Classes.jsx';
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 
 const router = createBrowserRouter([
   {
@@ -35,16 +36,24 @@ const router = createBrowserRouter([
         path: "/instructors",
         element: <Instructors></Instructors>
       },
+      {
+        path: "/classes",
+        element: <Classes></Classes>
+      },
     ]
   },
 ]);
 
+const queryClient = new QueryClient()
+
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
     <AuthProvider>
-      <Container>
-        <RouterProvider router={router} />
-      </Container>
+      <QueryClientProvider client={queryClient}>
+        <Container>
+          <RouterProvider router={router} />
+        </Container>
+      </QueryClientProvider>
     </AuthProvider>
   </React.StrictMode>,
 )
