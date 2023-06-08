@@ -6,8 +6,8 @@ const Header = () => {
     const { user, userLogOut } = useContext(AuthContext);
     const photoURL = user?.photoURL
     return (
-        <div className='mx-5'>
-            <div className="navbar justify-between">
+        <div className='px-5 absolute bg-[#0000002b] right-0 left-0 z-50'>
+            <div className="navbar justify-between max-w-7xl mx-auto">
                 <div className="navbar-start">
                     <div className="dropdown">
                         <label tabIndex={0} className="btn btn-ghost lg:hidden">
@@ -31,11 +31,11 @@ const Header = () => {
                     </NavLink>
                 </div>
                 <div className="navbar-center hidden lg:flex">
-                    <ul className="flex gap-10 items-center text-lg">
+                    <ul className="flex gap-10 items-center text-lg text-white bg-blend-multiply">
                         <li><NavLink className={({ isActive }) => isActive ? "text-[#EA4C24] font-semibold" : "hover:text-[#EA4C24] duration-300 font-semibold"} to="/">Home</NavLink></li>
                         <li><NavLink className={({ isActive }) => isActive ? "text-[#EA4C24] font-semibold" : "hover:text-[#EA4C24] duration-300 font-semibold"} to="/instructors">Instructors</NavLink></li>
                         <li><NavLink className={({ isActive }) => isActive ? "text-[#EA4C24] font-semibold" : "hover:text-[#EA4C24] duration-300 font-semibold"} to="/classes">Classes</NavLink></li>
-                        <li><NavLink className={({ isActive }) => isActive ? "text-[#EA4C24] font-semibold" : "hover:text-[#EA4C24] duration-300 font-semibold"} to="/dashboard">Dashboard</NavLink></li>
+                        {user && <li><NavLink className={({ isActive }) => isActive ? "text-[#EA4C24] font-semibold" : "hover:text-[#EA4C24] duration-300 font-semibold"} to="/dashboard">Dashboard</NavLink></li>}
                         {
                             user &&
                             <div className="dropdown dropdown-end">
@@ -46,7 +46,7 @@ const Header = () => {
                                         }
                                     </div>
                                 </label>
-                                <ul tabIndex={0} className="mt-3 p-2 shadow menu menu-sm dropdown-content bg-base-100 rounded-box w-52">
+                                <ul tabIndex={0} className="mt-3 p-2 shadow menu menu-sm dropdown-content bg-base-100 text-black rounded-box w-52">
                                     <li>
                                         <a className="justify-between">
                                             {user?.displayName}

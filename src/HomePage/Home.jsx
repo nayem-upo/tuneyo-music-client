@@ -1,12 +1,12 @@
 import React from 'react';
+import Banner from './Banner';
+import PopularClasses from './PopularClasses';
 
 const Home = () => {
     return (
         <div>
-            <h1 className='text-blue-600'>Ami home</h1>
-            <h1 className="text-3xl font-bold underline">
-                Hello world!
-            </h1>
+            <Banner></Banner>
+            <PopularClasses></PopularClasses>
         </div>
     );
 };

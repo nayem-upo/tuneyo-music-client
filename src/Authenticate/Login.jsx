@@ -54,7 +54,7 @@ const Login = () => {
 
 
     return (
-        <div className='flex justify-center my-20 gap-10'>
+        <div className='flex justify-center pb-20 pt-32 gap-10'>
             <img className='shadow-md rounded w-[400px] object-cover' src="https://www.steinway.com/.imaging/default/dam/Special-Pianos/pops/pops_builder/pops_rendering/191223-POPS.1760.png/jcr:content.jpg" alt="" />
             <form className='flex gap-3 flex-col' onSubmit={handleSubmit(handleLogin)}>
                 <p className='text-[#EA4C24] text-3xl font-semibold'>Enter Your Login details!</p>
