@@ -12,6 +12,7 @@ import Container from './Components/Container.jsx';
 import Login from './Authenticate/Login.jsx';
 import Register from './Authenticate/Register.jsx';
 import AuthProvider from './Authenticate/AuthProvider.jsx';
+import Instructors from './InstructorsPage/Instructors.jsx';
 
 const router = createBrowserRouter([
   {
@@ -29,7 +30,11 @@ const router = createBrowserRouter([
       {
         path: "/register",
         element: <Register></Register>
-      }
+      },
+      {
+        path: "/instructors",
+        element: <Instructors></Instructors>
+      },
     ]
   },
 ]);
