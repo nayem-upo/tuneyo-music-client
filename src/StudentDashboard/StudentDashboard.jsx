@@ -1,0 +1,32 @@
+import React from 'react';
+import { NavLink, Outlet } from 'react-router-dom';
+
+const StudentDashboard = () => {
+    return (
+        <div className='pt-[66.5px]'>
+            <div className="drawer lg:drawer-open">
+                <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
+                <div className="drawer-content flex flex-col items-center justify-center">
+                    <div>
+                        <Outlet></Outlet>
+                    </div>
+                    <label htmlFor="my-drawer-2" className="drawer lg:hidden">drawer</label>
+
+                </div>
+                <div className="drawer-side">
+                    <label htmlFor="my-drawer-2" className="drawer-overlay"></label>
+                    <ul className="menu p-4 w-52 h-full bg-[#EA4C24] text-white font-semibold pt-[66.5px] md:pt-6">
+                        <div className='flex flex-col gap-3'>
+                            <li><NavLink to='/studentdashboard/selected'>My Selected Classes</NavLink></li>
+                            <li><NavLink to="/studentdashboard/enroled">My Enrolled Classes</NavLink></li>
+                            <li><NavLink to="/studentdashboard/payment">Payment</NavLink></li>
+                            <li><NavLink to="/studentdashboard/history">Payment history</NavLink></li>
+                        </div>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    );
+};
+
+export default StudentDashboard;

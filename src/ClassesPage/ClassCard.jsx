@@ -3,11 +3,14 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React, { useContext, useEffect, useState } from 'react';
 import { AuthContext } from '../Authenticate/AuthProvider';
 import { useQuery } from '@tanstack/react-query';
+import Swal from 'sweetalert2';
+import { useNavigate } from 'react-router-dom';
 
 const ClassCard = ({ clasS }) => {
     const { user } = useContext(AuthContext);
     const { _id, className, classImage, instructorName, instructorEmail, availableSeats, price } = clasS;
     const [allUsers, setAllUsers] = useState([]);
+    const navigate = useNavigate();
     useEffect(() => {
         fetch('http://localhost:5000/users')
             .then(res => res.json())
@@ -16,26 +19,49 @@ const ClassCard = ({ clasS }) => {
     const filteredUser = allUsers.find(userr => userr.email === user?.email)
 
     const handleSelectClass = (id) => {
+        const selectedClass = {
+            className,
+            classImage,
+            instructorEmail,
+            instructorName,
+            availableSeats,
+            price,
+            studentEmail: user.email,
+            type: "selected"
+        }
         if (!user) {
             Swal.fire({
-                title: 'Are you sure?',
-                text: "You won't be able to revert this!",
+                title: 'Please login before you select a class!',
                 icon: 'warning',
                 showCancelButton: true,
                 confirmButtonColor: '#3085d6',
                 cancelButtonColor: '#d33',
-                confirmButtonText: 'Yes, delete it!'
+                confirmButtonText: 'Login now'
             }).then((result) => {
                 if (result.isConfirmed) {
-                    Swal.fire(
-                        'Deleted!',
-                        'Your file has been deleted.',
-                        'success'
-                    )
+                    navigate('/login')
                 }
             })
             return;
         }
+        fetch('http://localhost:5000/selectedclasses', {
+            method: "POST",
+            headers: {
+                "content-type": "application/json"
+            },
+            body: JSON.stringify(selectedClass)
+        })
+            .then(res => res.json())
+            .then(data => {
+                console.log(data);
+                Swal.fire({
+                    position: 'top-end',
+                    icon: 'success',
+                    title: 'Class added successfully',
+                    showConfirmButton: false,
+                    timer: 1500
+                })
+            })
     }
     return (
         <div className={`${availableSeats === 0 ? 'bg-red-300 shadow-md shadow-red-700' : 'bg-white shadow-xl rounded-b-md w-[320px]'}`}>

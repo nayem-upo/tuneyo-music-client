@@ -14,6 +14,10 @@ import AuthProvider from './Authenticate/AuthProvider.jsx';
 import Instructors from './InstructorsPage/Instructors.jsx';
 import Classes from './ClassesPage/Classes.jsx';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+import StudentDashboard from './StudentDashboard/StudentDashboard';
+import SelectedClasses from './StudentDashboard/SelectedClasses';
+import EnrolledClasses from './StudentDashboard/EnrolledClasses';
+import Private from './Authenticate/Private';
 
 const router = createBrowserRouter([
   {
@@ -39,6 +43,20 @@ const router = createBrowserRouter([
       {
         path: "/classes",
         element: <Classes></Classes>
+      },
+      {
+        path: "/studentdashboard",
+        element: <Private><StudentDashboard></StudentDashboard></Private>,
+        children: [
+          {
+            path: "/studentdashboard/selected",
+            element: <SelectedClasses></SelectedClasses>
+          },
+          {
+            path: "/studentdashboard/enroled",
+            element: <EnrolledClasses></EnrolledClasses>
+          },
+        ]
       },
     ]
   },
