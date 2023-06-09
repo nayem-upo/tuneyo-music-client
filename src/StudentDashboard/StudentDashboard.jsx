@@ -16,10 +16,11 @@ const StudentDashboard = () => {
                 <div className="drawer-side">
                     <label htmlFor="my-drawer-2" className="drawer-overlay"></label>
                     <ul className="menu p-4 w-52 h-full bg-[#EA4C24] text-white font-semibold pt-[66.5px] md:pt-6">
+                        <h1 className='text-center font-semibold text-xl'>Student Dashboard</h1>
+                        <div className='p-[2px] w-[160px] mx-auto my-2 mb-5 bg-[#f1d1c9]'></div>
                         <div className='flex flex-col gap-3'>
                             <li><NavLink to='/studentdashboard/selected'>My Selected Classes</NavLink></li>
                             <li><NavLink to="/studentdashboard/enroled">My Enrolled Classes</NavLink></li>
-                            <li><NavLink to="/studentdashboard/payment">Payment</NavLink></li>
                             <li><NavLink to="/studentdashboard/history">Payment history</NavLink></li>
                         </div>
                     </ul>

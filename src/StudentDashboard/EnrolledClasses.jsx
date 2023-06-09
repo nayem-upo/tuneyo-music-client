@@ -9,7 +9,7 @@ const EnrolledClasses = () => {
         <div className='w-full'>
             <div>
                 <div className='text-center'>
-                    <h1 className='font-semibold text-4xl'>MY SELECTED CLASSES</h1>
+                    <h1 className='font-semibold text-4xl uppercase'>MY Enrolled CLASSES</h1>
                     <div className='p-[2px] w-[450px] mx-auto mt-2 bg-[#EA4C24]'></div>
                 </div>
                 <section className="text-gray-600 body-font w-[700px] mb-10 bg-white rounded-sm p-5">

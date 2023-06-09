@@ -2,7 +2,6 @@ import { faChalkboardTeacher, faChalkboardUser, faDoorOpen, faMoneyCheckDollar, 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React, { useContext, useEffect, useState } from 'react';
 import { AuthContext } from '../Authenticate/AuthProvider';
-import { useQuery } from '@tanstack/react-query';
 import Swal from 'sweetalert2';
 import { useNavigate } from 'react-router-dom';
 

@@ -18,6 +18,7 @@ import StudentDashboard from './StudentDashboard/StudentDashboard';
 import SelectedClasses from './StudentDashboard/SelectedClasses';
 import EnrolledClasses from './StudentDashboard/EnrolledClasses';
 import Private from './Authenticate/Private';
+import Payment from './StudentDashboard/Payment';
 
 const router = createBrowserRouter([
   {
@@ -55,6 +56,15 @@ const router = createBrowserRouter([
           {
             path: "/studentdashboard/enroled",
             element: <EnrolledClasses></EnrolledClasses>
+          },
+          {
+            path: "/studentdashboard/payment",
+            element: <Payment></Payment>
+          },
+          {
+            path: "/studentdashboard/payment/:id",
+            element: <Private><Payment></Payment></Private>,
+            loader: ({ params }) => fetch(`http://localhost:5000/selectedclasses/${params.id}`)
           },
         ]
       },
