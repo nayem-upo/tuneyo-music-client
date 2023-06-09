@@ -20,13 +20,13 @@ const Classes = () => {
                 <div className="hero h-[350px]">
                     <div className="text-center mt-48">
                         <div className="max-w-4xl w-[500px] text-white px-10 py-8 bg-white">
-                            <h1 className="mb-5 text-5xl font-semibold text-[#EA4C24]">All Classes</h1>
-                            <p className='text-black text-3xl'>Available Music Class</p>
+                            <h1 className="mb-5 text-5xl font-semibold text-[#EA4C24]">Classes</h1>
+                            <p className='text-black text-3xl'>All Available Music Class</p>
                         </div>
                     </div>
                 </div>
             </Parallax>
-            <div className='grid grid-cols-3 justify-items-center gap-y-10 my-20'>
+            <div className='grid grid-cols-3 justify-items-center mx-5 gap-y-10 my-20'>
                 {
                     classes.map(clasS => <ClassCard clasS={clasS} key={clasS._id}></ClassCard>)
                 }

@@ -11,6 +11,8 @@ const AuthProvider = ({ children }) => {
     const [loading, setLoading] = useState(true);
     const [user, setUser] = useState(null)
 
+
+
     const createUser = (email, password) => {
         return createUserWithEmailAndPassword(auth, email, password);
     }
@@ -23,7 +25,7 @@ const AuthProvider = ({ children }) => {
     const userLogOut = () => {
         signOut(auth)
             .then(() => {
-                
+
             }).catch((error) => {
                 console.log(error);
             });
