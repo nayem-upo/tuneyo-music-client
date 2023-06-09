@@ -10,7 +10,14 @@ const provider = new GoogleAuthProvider();
 const AuthProvider = ({ children }) => {
     const [loading, setLoading] = useState(true);
     const [user, setUser] = useState(null)
+    const [allUsers, setAllUsers] = useState([]);
 
+    useEffect(() => {
+        fetch('http://localhost:5000/users')
+            .then(res => res.json())
+            .then(data => setAllUsers(data))
+    }, [])
+    const filteredUser = allUsers.find(userr => userr.email === user?.email)
 
 
     const createUser = (email, password) => {
@@ -38,6 +45,7 @@ const AuthProvider = ({ children }) => {
         userLogin,
         googleLogin,
         userLogOut,
+        filteredUser,
     }
     useEffect(() => {
         const unsubscribe = onAuthStateChanged(auth, (loggedUser) => {

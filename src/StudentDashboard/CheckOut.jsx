@@ -5,7 +5,7 @@ import Swal from "sweetalert2";
 
 
 const CheckOut = ({ selectedClass }) => {
-    const { price, _id } = selectedClass;
+    const { price, _id, className, classImage } = selectedClass;
     const stripe = useStripe();
     const elements = useElements();
     const { user } = useContext(AuthContext);
@@ -75,12 +75,36 @@ const CheckOut = ({ selectedClass }) => {
                 const response = await fetch(`http://localhost:5000/selectedclasses/${_id}`, {
                     method: 'PATCH',
                 });
-                const data = await response.json();
+                //reducing available seats by 1
+                const res = await fetch(`http://localhost:5000/classes/${className}`, {
+                    method: 'PATCH',
+                });
+                const data = await res.json();
 
-                if (data.modifiedCount) {
-                    console.log('Payment success!');
-                    Swal.fire('Payment Successful! Thank You')
+                const newPayment = {
+                    email: user?.email,
+                    price,
+                    className,
+                    classImage
                 }
+                //post a payment for show history
+                fetch('http://localhost:5000/payments', {
+                    method: "POST",
+                    headers: {
+                        "content-type": "application/json"
+                    },
+                    body: JSON.stringify(newPayment)
+                })
+                    .then(res => res.json())
+                    .then(data => {
+                        if (data.acknowledged) {
+                            setError("")
+                            console.log('Payment success!');
+                            Swal.fire('Payment Successful. Thank You!')
+                        }
+                    })
+
+
             }
         } catch (error) {
             console.log('Error processing payment:', error);
@@ -93,6 +117,18 @@ const CheckOut = ({ selectedClass }) => {
     return (
         <form className="text-center" onSubmit={handleSubmit}>
             <div>
+                <div>
+                    <div className="p-4 w-[400px]">
+                        <div className="h-full flex flex-col items-center text-center">
+                            <img alt="team" className="flex-shrink-0 rounded-lg w-full h-56 object-cover object-center mb-4" src={classImage} />
+                            <div className="w-full">
+                                <h2 className="title-font font-medium text-lg text-gray-900">{className}</h2>
+                                <h3 className="text-xl font-semibold mb-3 text-[#EA4C24]">Price: ${price}</h3>
+                                <p className="mb-4"><span className="font-semibold">Fill out the payment details in the form below.</span></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
                 <CardElement
                     options={{
                         style: {
@@ -113,7 +149,7 @@ const CheckOut = ({ selectedClass }) => {
             </div>
             <button
                 disabled={!stripe || processing}
-                className="bg-[#570DF8] my-10 text-white font-semibold py-2 px-32 disabled:text-zinc-500yyy"
+                className="bg-[#EA4C24] my-10 text-white font-semibold py-2 px-40 rounded-sm disabled:text-zinc-500yyy"
                 type="submit"
             >
                 {processing ? 'Processing...' : 'Pay'}

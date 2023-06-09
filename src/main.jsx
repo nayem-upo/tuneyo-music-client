@@ -19,6 +19,8 @@ import SelectedClasses from './StudentDashboard/SelectedClasses';
 import EnrolledClasses from './StudentDashboard/EnrolledClasses';
 import Private from './Authenticate/Private';
 import Payment from './StudentDashboard/Payment';
+import PaymentHistory from './StudentDashboard/PaymentHistory';
+import StudentRoute from './Authenticate/Routes/StudentRoute';
 
 const router = createBrowserRouter([
   {
@@ -51,7 +53,7 @@ const router = createBrowserRouter([
         children: [
           {
             path: "/studentdashboard/selected",
-            element: <SelectedClasses></SelectedClasses>
+            element: <StudentRoute><SelectedClasses></SelectedClasses></StudentRoute>
           },
           {
             path: "/studentdashboard/enroled",
@@ -60,6 +62,10 @@ const router = createBrowserRouter([
           {
             path: "/studentdashboard/payment",
             element: <Payment></Payment>
+          },
+          {
+            path: "/studentdashboard/history",
+            element: <PaymentHistory></PaymentHistory>
           },
           {
             path: "/studentdashboard/payment/:id",

@@ -52,18 +52,27 @@ const ClassCard = ({ clasS }) => {
         })
             .then(res => res.json())
             .then(data => {
-                console.log(data);
+                if (data.message) {
+                    Swal.fire({
+                        position: 'top-end',
+                        icon: 'warning',
+                        title: 'Class allready selected',
+                        showConfirmButton: false,
+                        timer: 1500
+                    })
+                    return;
+                }
                 Swal.fire({
                     position: 'top-end',
                     icon: 'success',
-                    title: 'Class added successfully',
+                    title: 'Class selected successfully',
                     showConfirmButton: false,
                     timer: 1500
                 })
             })
     }
     return (
-        <div className={`${availableSeats === 0 ? 'bg-red-300 shadow-md shadow-red-700' : 'bg-white shadow-xl rounded-b-md w-[320px]'}`}>
+        <div className={`${availableSeats < 1 ? 'bg-red-300 shadow-md shadow-red-700' : 'bg-white shadow-xl rounded-b-md w-[320px]'}`}>
             <div className=' '>
                 <img className='w-full h-[200px] object-cover shadow-xl' src={classImage} alt="" />
                 <div className='p-5'>
@@ -74,7 +83,7 @@ const ClassCard = ({ clasS }) => {
                         <h1 className='flex font-semibold items-center gap-2'><FontAwesomeIcon icon={faMoneyCheckDollar} style={{ color: "#EA4C24" }} />Price: <span className='text-[#EA4C24]'>${price}</span></h1>
                     </div>
                 </div>
-                <button onClick={handleSelectClass} disabled={availableSeats === 0 || filteredUser?.role === "admin" ? true : ""} className='bg-[#ffffff] w-full items-center text-xl justify-center gap-2 flex text-[#EA4C24] disabled:text-[#e1d1cc] disabled:border-white disabled:cursor-default font-semibold hover:border-[#EA4C24] duration-300 border-2 border-white cursor-pointer rounded-b shadow py-2 px-5'>Select</button>
+                <button onClick={handleSelectClass} disabled={availableSeats < 1 || filteredUser?.role === "admin" ? true : ""} className='bg-[#ffffff] w-full items-center text-xl justify-center gap-2 flex text-[#EA4C24] disabled:text-[#e1d1cc] disabled:border-white disabled:cursor-default font-semibold hover:border-[#EA4C24] duration-300 border-2 border-white cursor-pointer rounded-b shadow py-2 px-5'>Select</button>
             </div>
         </div>
     );

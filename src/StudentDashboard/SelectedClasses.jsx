@@ -23,7 +23,6 @@ const SelectedClasses = () => {
                 })
                     .then(res => res.json())
                     .then(data => {
-                        console.log(data);
                         if (data.deletedCount > 0) {
                             refetch()
                             Swal.fire(
@@ -67,6 +66,10 @@ const SelectedClasses = () => {
                                     }
                                 </tbody>
                             </table>
+                            {
+                                onlySelected.length === 0 &&
+                                <p className='w-full text-center py-5 text-2xl font-semibold text-[#EA4C24]'>You have not select any class yet!</p>
+                            }
                         </div>
                     </div>
                 </section>
