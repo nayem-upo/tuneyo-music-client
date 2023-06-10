@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const JoinClassSectoin = () => {
     return (
@@ -13,7 +14,8 @@ const JoinClassSectoin = () => {
                 <progress className="progress progress-error w-[530px] mb-7" value="90" max="100"></progress>
                 <label className='text-xl font-semibold pb-2' htmlFor="ability">Student Satisfaction</label>
                 <progress className="progress progress-error w-[530px]" value="80" max="100"></progress>
-                <button className='bg-[#EA4C24] w-[150px] mt-7 hover:bg-[#ffffff] duration-300 border-2 border-[#EA4C24] hover:text-[#EA4C24] py-3 px-6 rounded-lg text-white font-semibold'>Learn More</button>
+                
+                <Link to="/classes"> <button className='bg-[#EA4C24] w-[150px] mt-7 hover:bg-[#ffffff] duration-300 border-2 border-[#EA4C24] hover:text-[#EA4C24] py-3 px-6 rounded-lg text-white font-semibold'>Learn More</button></Link>
             </div>
             <div className='flex w-1/2 gap-7 items-center'>
                 <img className='w-[360px] h-[560px] object-cover rounded-md' src="https://ssww-blog.s3.amazonaws.com/blog/wp-content/uploads/music-crafts-for-kids.jpg" alt="" />

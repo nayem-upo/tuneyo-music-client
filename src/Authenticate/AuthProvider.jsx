@@ -16,7 +16,7 @@ const AuthProvider = ({ children }) => {
         fetch('http://localhost:5000/users')
             .then(res => res.json())
             .then(data => setAllUsers(data))
-    }, [])
+    }, [user])
     const filteredUser = allUsers.find(userr => userr.email === user?.email)
 
 

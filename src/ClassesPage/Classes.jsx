@@ -30,6 +30,11 @@ const Classes = () => {
                 {
                     classes.map(clasS => <ClassCard clasS={clasS} key={clasS._id}></ClassCard>)
                 }
+                <div></div>
+                {
+                    classes.length < 1 &&
+                    <div className='text-4xl font-semibold text-center'>No Music Class Are Available</div>
+                }
             </div>
         </div>
     );

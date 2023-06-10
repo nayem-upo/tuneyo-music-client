@@ -21,6 +21,10 @@ import Private from './Authenticate/Private';
 import Payment from './StudentDashboard/Payment';
 import PaymentHistory from './StudentDashboard/PaymentHistory';
 import StudentRoute from './Authenticate/Routes/StudentRoute';
+import InstructorDashboard from './InstructorDashboard/InstructorDashboard';
+import InstructorRoute from './Authenticate/Routes/InstructorRoute';
+import AddClass from './InstructorDashboard/AddClass';
+import MyAddedClasses from './InstructorDashboard/MyAddedClasses';
 
 const router = createBrowserRouter([
   {
@@ -72,6 +76,28 @@ const router = createBrowserRouter([
             element: <Private><Payment></Payment></Private>,
             loader: ({ params }) => fetch(`http://localhost:5000/selectedclasses/${params.id}`)
           },
+        ]
+      },
+      {
+        path: "/instructordashboard",
+        element: <Private><InstructorDashboard></InstructorDashboard></Private>,
+        children: [
+          {
+            path: "/instructordashboard/addclass",
+            element: <InstructorRoute><AddClass></AddClass></InstructorRoute>
+          },
+          {
+            path: "/instructordashboard/enroled",
+            element: <MyAddedClasses></MyAddedClasses>
+          },
+          {
+            path: "/instructordashboard/payment",
+            element: <Payment></Payment>
+          },
+          {
+            path: "/instructordashboard/history",
+            element: <PaymentHistory></PaymentHistory>
+          }
         ]
       },
     ]

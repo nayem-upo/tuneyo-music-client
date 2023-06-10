@@ -7,7 +7,7 @@ const auth = getAuth();
 
 const Register = () => {
     const { createUser, googleLogin, user } = useContext(AuthContext);
-    // console.log(user);
+
     const navigate = useNavigate();
     const location = useLocation();
     const [success, setSuccess] = useState('');
@@ -18,40 +18,54 @@ const Register = () => {
 
     const { register, handleSubmit, formState: { errors } } = useForm();
 
+    function containsSpecialChars(str) {
+        const specialChars = /[`!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?~]/;
+        return specialChars.test(str);
+    }
+
     const handleRegister = data => {
         const { name, email, password, confirm, photo } = data;
-        createUser(email, password)
-            .then((userCredential) => {
-                console.log(name, password);
-                navigate(from, { replace: true });
-                setError("")
-                setSuccess("Register Successfull")
-                const user = userCredential.user;
-                console.log(user);
-                updateProfile(auth.currentUser, {
-                    displayName: name, photoURL: photo, role: "user"
-                }).then(() => {
-                    const saveUser = { name: name, email: email, role: "user" }
-                    fetch('http://localhost:5000/users', {
-                        method: 'POST',
-                        headers: {
-                            "content-type": "application/json"
-                        },
-                        body: JSON.stringify(saveUser)
-                    })
-                        .then(res => res.json())
-                        .then(data => { })
-                }).catch((error) => {
+
+        if (password === confirm && containsSpecialChars(password)) {
+            setError("")
+            createUser(email, password)
+                .then((userCredential) => {
+                    navigate(from, { replace: true });
+                    setError("")
+                    setSuccess("Register Successfull")
+                    const user = userCredential.user;
+                    updateProfile(auth.currentUser, {
+                        displayName: name, photoURL: photo, role: "user"
+                    }).then(() => {
+                        const saveUser = { name: name, email: email, role: "user" }
+                        fetch('http://localhost:5000/users', {
+                            method: 'POST',
+                            headers: {
+                                "content-type": "application/json"
+                            },
+                            body: JSON.stringify(saveUser)
+                        })
+                            .then(res => res.json())
+                            .then(data => { })
+                    }).catch((error) => {
+                    });
+                })
+                .catch((error) => {
+                    const errorCode = error.code;
+                    const errorMessage = error.message;
+                    setSuccess("")
+                    setError(errorMessage)
                 });
-            })
-            .catch((error) => {
-                const errorCode = error.code;
-                const errorMessage = error.message;
-                setSuccess("")
-                setError(errorMessage)
-                console.log(errorMessage);
-            });
+        }
+        else if (!containsSpecialChars(password)) {
+            setError("Don't have a special character")
+        }
+        else {
+            setError("Your confirm password doesn't match")
+        }
+
     };
+
 
     const handleGoogleRegister = () => {
         googleLogin()
@@ -94,7 +108,7 @@ const Register = () => {
 
     return (
         <div className='flex justify-center pb-20 pt-32 gap-10'>
-            <img className='shadow-md rounded w-[400px] object-cover' src="https://www.steinway.com/.imaging/default/dam/Special-Pianos/pops/pops_builder/pops_rendering/191223-POPS.1760.png/jcr:content.jpg" alt="" />
+            <img className='shadow-md rounded w-[400px] h-[530px] object-cover' src="https://www.steinway.com/.imaging/default/dam/Special-Pianos/pops/pops_builder/pops_rendering/191223-POPS.1760.png/jcr:content.jpg" alt="" />
             <form className='flex gap-3 flex-col' onSubmit={handleSubmit(handleRegister)}>
                 <p className='text-[#EA4C24] text-3xl font-semibold'>Create An Account!</p>
                 <input className='bg-[#F3F4F6] h-10 mx-auto w-[340px] ps-3 outline-none' placeholder='Full Name' {...register("name", { required: true })} />
@@ -119,9 +133,14 @@ const Register = () => {
                 >
                     {showConfirmPassword ? 'Hide' : 'Show'}
                 </button>
-                {errors.confirm && <span className='text-red-600'>Please confirm your password</span>}
                 <input className='bg-[#F3F4F6] h-10 mx-auto w-[340px] ps-3 outline-none' placeholder='Photo URL' {...register("photo", { required: true })} />
                 {errors.photo && <span className='text-red-600'>Photo URL is required</span>}
+                {error &&
+                    <p className='text-red-600 w-[340px] text-center'>{error}</p>
+                }
+                {success &&
+                    <p className='text-green-500 w-[340px] text-center'>{success}</p>
+                }
                 <button className="bg-[#EA4C24] text-white font-semibold hover:bg-[#ffffff] duration-300 border-2 border-[#EA4C24] hover:text-[#EA4C24] cursor-pointer inline-block rounded shadow py-2 px-5 text-sm">
                     Sign Up
                 </button>
