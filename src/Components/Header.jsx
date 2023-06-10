@@ -36,14 +36,14 @@ const Header = () => {
                         <li><NavLink className={({ isActive }) => isActive ? "text-[#EA4C24] font-semibold" : "hover:text-[#EA4C24] duration-300 font-semibold"} to="/instructors">Instructors</NavLink></li>
                         <li><NavLink className={({ isActive }) => isActive ? "text-[#EA4C24] font-semibold" : "hover:text-[#EA4C24] duration-300 font-semibold"} to="/classes">Classes</NavLink></li>
                         {filteredUser?.role === "user" &&
-                             
+
                             <li><NavLink className={({ isActive }) => isActive ? "text-[#EA4C24] font-semibold" : "hover:text-[#EA4C24] duration-300 font-semibold"} to="/studentdashboard/selected">Dashboard</NavLink></li>
                         }
                         {filteredUser?.role === "instructor" &&
                             <li><NavLink className={({ isActive }) => isActive ? "text-[#EA4C24] font-semibold" : "hover:text-[#EA4C24] duration-300 font-semibold"} to="/instructordashboard/addclass">Dashboard</NavLink></li>
                         }
                         {filteredUser?.role === "admin" &&
-                            <li><NavLink className={({ isActive }) => isActive ? "text-[#EA4C24] font-semibold" : "hover:text-[#EA4C24] duration-300 font-semibold"} to="/instructordashboard/selected">Dashboard</NavLink></li>
+                            <li><NavLink className={({ isActive }) => isActive ? "text-[#EA4C24] font-semibold" : "hover:text-[#EA4C24] duration-300 font-semibold"} to="/admindashboard/manageclasses">Dashboard</NavLink></li>
                         }
                         {
                             user &&
@@ -62,7 +62,15 @@ const Header = () => {
                                             <span className="badge">New</span>
                                         </a>
                                     </li>
-                                    <li><a>Settings</a></li>
+                                    {filteredUser?.role === "user" &&
+                                        <li><NavLink className={({ isActive }) => isActive ? "text-[#EA4C24] font-semibold" : "hover:text-[#EA4C24] duration-300 font-semibold"}>Logged as Student</NavLink></li>
+                                    }
+                                    {filteredUser?.role === "instructor" &&
+                                        <li><NavLink className={({ isActive }) => isActive ? "text-[#EA4C24] font-semibold" : "hover:text-[#EA4C24] duration-300 font-semibold"}>Logged as Instructor</NavLink></li>
+                                    }
+                                    {filteredUser?.role === "admin" &&
+                                        <li><NavLink className={({ isActive }) => isActive ? "text-[#EA4C24] font-semibold" : "hover:text-[#EA4C24] duration-300 font-semibold"}>Logged as Admin</NavLink></li>
+                                    }
                                     <li onClick={userLogOut}><a>Logout</a></li>
                                 </ul>
                             </div>

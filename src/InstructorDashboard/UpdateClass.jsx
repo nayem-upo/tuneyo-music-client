@@ -1,58 +1,55 @@
 import React, { useContext } from 'react';
 import { useForm } from 'react-hook-form';
-import Swal from 'sweetalert2';
 import { AuthContext } from '../Authenticate/AuthProvider';
+import Swal from 'sweetalert2';
+import { useLoaderData } from 'react-router-dom';
 
-const AddClass = () => {
+const UpdateClass = () => {
     const { user } = useContext(AuthContext);
     const { register, handleSubmit, watch, formState: { errors } } = useForm();
-    const handleAddCard = (data) => {
-        const { _id, className, classImage, instructorName, instructorEmail, availableSeats, price } = data;
-        const newClass = {
+    const { _id, status, feedback } = useLoaderData();
+    const handleUpdateCard = (data) => {
+        const { className, classImage, availableSeats, price } = data;
+        console.log(status, feedback);
+        const updatedClass = {
             className,
             classImage,
-            instructorName: user.displayName,
-            instructorEmail: user.email,
             availableSeats: parseInt(availableSeats),
             price,
-            status: "pending",
-            enrolled: 0,
-            feedback: "No Feedback"
+            status,
+            feedback
         }
-        fetch('http://localhost:5000/classes', {
-            method: "POST",
+        fetch(`http://localhost:5000/classes/${_id}`, {
+            method: "PUT",
             headers: {
                 'content-type': 'application/json'
             },
-            body: JSON.stringify(newClass)
+            body: JSON.stringify(updatedClass)
         })
             .then(res => res.json())
             .then(data => {
-                console.log(data);
-                if (data.insertedId) {
-                    console.log(data);
+                if (data.acknowledged) {
                     Swal.fire({
                         title: 'Success!',
-                        text: 'Class added successfully',
+                        text: 'Class Updated successfully',
                         icon: 'success',
                         confirmButtonText: 'Closs'
                     })
                 }
             })
     }
-
     return (
         <div>
             <div className='text-center my-10'>
-                <h1 className='font-semibold text-4xl'>ADD A NEW CLASSES</h1>
+                <h1 className='font-semibold text-4xl'>UPDATE A CLASSES</h1>
                 <div className='p-[2px] w-[450px] mx-auto mt-2 bg-[#EA4C24]'></div>
             </div>
             <div className=' rounded-lg mb-10 mx-auto text-center bg-[#9b29b215] md:p-10 py-5 border-4 border-[#EA4C24]'>
-                <h1 className="py-2 font-semibold text-[#EA4C24]">Fill the form below to add a new class</h1>
-                <form onSubmit={handleSubmit(handleAddCard)} className="w-[650px] mx-auto">
+                <h1 className="py-2 font-semibold text-[#EA4C24]">Fill the form below to update a class</h1>
+                <form onSubmit={handleSubmit(handleUpdateCard)} className="w-[650px] mx-auto">
                     <div className="relative mb-4 text-left">
                         <label htmlFor="name" className="text-lg leading-7 font-semibold text-gray-600">Class name</label>
-                        <input className='bg-[#ffffff] w-full h-10 mx-auto ps-3 outline-none' placeholder='Class name ( Please do not use more than one space or Tab! )' {...register("className", { required: true })} />
+                        <input className='bg-[#ffffff] w-full h-10 mx-auto ps-3 outline-none' placeholder='Class name' {...register("className", { required: true })} />
                         {errors.className && <span className='text-red-600'>This field is required</span>}
                     </div>
                     <div className="relative mb-4 text-left flex justify-between gap-4">
@@ -88,7 +85,7 @@ const AddClass = () => {
                         </div>
                     </div>
                     <button className="bg-[#EA4C24] w-full text-xl text-white font-semibold hover:bg-[#ffffff] duration-300 border-2 border-[#EA4C24] hover:text-[#EA4C24] cursor-pointer inline-block rounded shadow py-2 px-5">
-                        Add
+                        Update
                     </button>
                 </form>
             </div>
@@ -96,4 +93,4 @@ const AddClass = () => {
     );
 };
 
-export default AddClass;
+export default UpdateClass;

@@ -25,6 +25,11 @@ import InstructorDashboard from './InstructorDashboard/InstructorDashboard';
 import InstructorRoute from './Authenticate/Routes/InstructorRoute';
 import AddClass from './InstructorDashboard/AddClass';
 import MyAddedClasses from './InstructorDashboard/MyAddedClasses';
+import UpdateClass from './InstructorDashboard/UpdateClass';
+import AdminDashboard from './AdminDashboard/AdminDashboard';
+import ManageClasses from './AdminDashboard/ManageClasses';
+import ManageUsers from './AdminDashboard/ManageUsers';
+import AdminRoute from './Authenticate/Routes/AdminRoute';
 
 const router = createBrowserRouter([
   {
@@ -91,13 +96,24 @@ const router = createBrowserRouter([
             element: <MyAddedClasses></MyAddedClasses>
           },
           {
-            path: "/instructordashboard/payment",
-            element: <Payment></Payment>
+            path: "/instructordashboard/update/:id",
+            element: <UpdateClass></UpdateClass>,
+            loader: ({ params }) => fetch(`http://localhost:5000/classes/toupdate/${params.id}`)
+          },
+        ]
+      },
+      {
+        path: "/admindashboard",
+        element: <Private><AdminDashboard></AdminDashboard></Private>,
+        children: [
+          {
+            path: "/admindashboard/manageclasses",
+            element: <AdminRoute><ManageClasses></ManageClasses></AdminRoute>
           },
           {
-            path: "/instructordashboard/history",
-            element: <PaymentHistory></PaymentHistory>
-          }
+            path: "/admindashboard/manageusers",
+            element: <AdminRoute><ManageUsers></ManageUsers></AdminRoute>
+          },
         ]
       },
     ]

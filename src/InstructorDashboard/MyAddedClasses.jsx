@@ -13,12 +13,12 @@ const MyAddedClasses = () => {
         <div className='w-full'>
             <div>
                 <div className='text-center'>
-                    <h1 className='font-semibold text-4xl'>MY SELECTED CLASSES</h1>
+                    <h1 className='font-semibold text-4xl'>MY ADDED CLASSES</h1>
                     <div className='p-[2px] w-[450px] mx-auto mt-2 bg-[#EA4C24]'></div>
                 </div>
                 <section className="text-gray-600 body-font w-[800px] mb-10 bg-white rounded-sm p-5">
                     <div className='flex justify-between mx-7 uppercase my-5 items-center'>
-                        <h1 className='text-2xl font-semibold'>Total Selected Classes: </h1>
+                        <h1 className='text-2xl font-semibold'>Total Added Classes: {addedclasses.length}</h1>
                     </div>
                     <div className="container px-5 mx-auto">
                         <div className="w-full mx-auto overflow-auto">
@@ -40,10 +40,10 @@ const MyAddedClasses = () => {
                                     }
                                 </tbody>
                             </table>
-                            {/* {
-                                onlySelected.length === 0 &&
-                                <p className='w-full text-center py-5 text-2xl font-semibold text-[#EA4C24]'>You have not select any class yet!</p>
-                            } */}
+                            {
+                                addedclasses.length === 0 &&
+                                <p className='w-full text-center py-5 text-2xl font-semibold text-[#EA4C24]'>You have not added any class yet!</p>
+                            }
                         </div>
                     </div>
                 </section>

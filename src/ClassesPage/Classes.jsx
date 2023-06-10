@@ -9,6 +9,7 @@ const Classes = () => {
         return res.json();
     })
 
+    const approvedClasses = classes.filter(aproveclass => aproveclass.status === "approved")
     return (
         <div>
             <Parallax
@@ -28,11 +29,11 @@ const Classes = () => {
             </Parallax>
             <div className='grid grid-cols-3 justify-items-center mx-5 gap-y-10 my-20'>
                 {
-                    classes.map(clasS => <ClassCard clasS={clasS} key={clasS._id}></ClassCard>)
+                    approvedClasses.map(clasS => <ClassCard clasS={clasS} key={clasS._id}></ClassCard>)
                 }
                 <div></div>
                 {
-                    classes.length < 1 &&
+                    approvedClasses.length < 1 &&
                     <div className='text-4xl font-semibold text-center'>No Music Class Are Available</div>
                 }
             </div>

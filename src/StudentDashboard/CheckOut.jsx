@@ -71,7 +71,6 @@ const CheckOut = ({ selectedClass }) => {
                 setError(confirmError.message);
             }
             else if (paymentIntent) {
-                console.log('Payment intent:', paymentIntent);
                 const response = await fetch(`http://localhost:5000/selectedclasses/${_id}`, {
                     method: 'PATCH',
                 });

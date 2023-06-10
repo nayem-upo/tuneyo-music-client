@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom';
 
 const InstructorClassCard = ({ addedclasse, index }) => {
     const { _id, className, classImage, status, enrolled, feedback } = addedclasse;
+
     return (
         <tr className='h-[100px]'>
             <td className="border-t-2 border-b-2 border-gray-200 px-4 py-3">{index + 1}</td>
@@ -24,7 +25,7 @@ const InstructorClassCard = ({ addedclasse, index }) => {
                 }
             </td>
             <td className="border-t-2 border-b-2 border-gray-200 px-4 text-xl text-center">
-                <Link ><FontAwesomeIcon icon={faPenToSquare} className='cursor-pointer hover:scale-125 duration-200' title='Update' /></Link>
+                <Link to={`/instructordashboard/update/${_id}`}><FontAwesomeIcon icon={faPenToSquare} className='cursor-pointer hover:scale-125 duration-200' title='Update' /></Link>
             </td>
         </tr>
     );
