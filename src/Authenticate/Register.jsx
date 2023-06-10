@@ -12,6 +12,8 @@ const Register = () => {
     const location = useLocation();
     const [success, setSuccess] = useState('');
     const [error, setError] = useState('');
+    const [showPassword, setShowPassword] = useState(false);
+    const [showConfirmPassword, setShowConfirmPassword] = useState(false);
     const from = location.state?.from?.pathname || "/";
 
     const { register, handleSubmit, formState: { errors } } = useForm();
@@ -80,7 +82,15 @@ const Register = () => {
                 setError(errorMessage)
                 const credential = GoogleAuthProvider.credentialFromError(error);
             });
-    }
+    };
+
+    const togglePassword = () => {
+        setShowPassword(!showPassword);
+    };
+
+    const toggleConfirmPassword = () => {
+        setShowConfirmPassword(!showConfirmPassword);
+    };
 
     return (
         <div className='flex justify-center pb-20 pt-32 gap-10'>
@@ -91,9 +101,24 @@ const Register = () => {
                 {errors.name && <span className='text-red-600'>Please enter your full name</span>}
                 <input className='bg-[#F3F4F6] h-10 mx-auto w-[340px] ps-3 outline-none' placeholder='Email' {...register("email", { required: true })} />
                 {errors.email && <span className='text-red-600'>Enter your email</span>}
-                <input className='bg-[#F3F4F6] h-10 mx-auto w-[340px] ps-3 outline-none' placeholder='Password' {...register("password", { required: true })} />
+                <input className='bg-[#F3F4F6] h-10 mx-auto w-[340px] ps-3 outline-none' placeholder='Password' type={showPassword ? 'text' : 'password'} {...register("password", { required: true })} />
                 {errors.password && <span className='text-red-600'>Enter at least 6 characters password</span>}
-                <input className='bg-[#F3F4F6] h-10 mx-auto w-[340px] ps-3 outline-none' placeholder='Confirm Password' {...register("confirm", { required: true })} />
+                <button
+                    type="button"
+                    className="-mt-11 ms-72 w-10 mb-3 left-36 font-semibold text-[#717171] badge text-sm hover:text-[#EA4C24] focus:outline-none"
+                    onClick={togglePassword}
+                >
+                    {showPassword ? 'Hide' : 'Show'}
+                </button>
+                <input className='bg-[#F3F4F6] h-10 mx-auto w-[340px] ps-3 outline-none' placeholder='Confirm Password' type={showConfirmPassword ? 'text' : 'password'} {...register("confirm", { required: true })} />
+                {errors.confirm && <span className='text-red-600'>Please confirm your password</span>}
+                <button
+                    type="button"
+                    className="-mt-11 ms-72 w-10 mb-3 left-36 font-semibold text-[#717171] badge text-sm hover:text-[#EA4C24] focus:outline-none"
+                    onClick={toggleConfirmPassword}
+                >
+                    {showConfirmPassword ? 'Hide' : 'Show'}
+                </button>
                 {errors.confirm && <span className='text-red-600'>Please confirm your password</span>}
                 <input className='bg-[#F3F4F6] h-10 mx-auto w-[340px] ps-3 outline-none' placeholder='Photo URL' {...register("photo", { required: true })} />
                 {errors.photo && <span className='text-red-600'>Photo URL is required</span>}

@@ -48,7 +48,7 @@ const ClassCard = ({ clasS }) => {
             headers: {
                 "content-type": "application/json"
             },
-            body: JSON.stringify(selectedClass)
+            body: JSON.stringify({ selectedClass, email: user?.email })
         })
             .then(res => res.json())
             .then(data => {

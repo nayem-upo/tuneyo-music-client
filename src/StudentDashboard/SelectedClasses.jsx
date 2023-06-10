@@ -1,10 +1,16 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import SelectedClassCard from './SelectedClassCard';
 import useSelectedCard from '../Components/useSelectedCard';
 import Swal from 'sweetalert2';
+import { useQuery } from '@tanstack/react-query';
+import { AuthContext } from '../Authenticate/AuthProvider';
 
 const SelectedClasses = () => {
-    const [selectedClasses, refetch] = useSelectedCard();
+    const { user } = useContext(AuthContext);
+    const { data: selectedClasses = [], refetch } = useQuery(['selectedClasses'], async () => {
+        const res = await fetch(`http://localhost:5000/selectedclasses/student/${user?.email}`)
+        return res.json();
+    })
     const onlySelected = selectedClasses.filter(selected => selected.type === "selected");
 
     const handleDelete = (_id) => {

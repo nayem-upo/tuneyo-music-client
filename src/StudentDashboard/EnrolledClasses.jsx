@@ -1,9 +1,15 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import useSelectedCard from '../Components/useSelectedCard';
 import EnrolledClassesCard from './EnrolledClassesCard';
+import { AuthContext } from '../Authenticate/AuthProvider';
+import { useQuery } from '@tanstack/react-query';
 
 const EnrolledClasses = () => {
-    const [selectedClasses, refetch] = useSelectedCard();
+    const { user } = useContext(AuthContext);
+    const { data: selectedClasses = [], refetch } = useQuery(['selectedClasses'], async () => {
+        const res = await fetch(`http://localhost:5000/selectedclasses/student/${user?.email}`)
+        return res.json();
+    })
     const onlyPaidItem = selectedClasses.filter(selected => selected.type === "paid");
     return (
         <div className='w-full'>

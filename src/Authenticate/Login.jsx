@@ -11,6 +11,7 @@ const Login = () => {
     const [success, setSuccess] = useState('');
     const [error, setError] = useState('');
     const location = useLocation();
+    const [showPassword, setShowPassword] = useState(false);
     const from = location.state?.from?.pathname || "/";
     const navigate = useNavigate();
 
@@ -72,6 +73,9 @@ const Login = () => {
                 const credential = GoogleAuthProvider.credentialFromError(error);
             });
     }
+    const togglePassword = () => {
+        setShowPassword(!showPassword);
+    }
 
 
     return (
@@ -81,7 +85,19 @@ const Login = () => {
                 <p className='text-[#EA4C24] text-3xl font-semibold'>Enter Your Login details!</p>
                 <input className='bg-[#F3F4F6] h-10 mx-auto w-[340px] ps-3 outline-none' placeholder='Email' {...register("email", { required: true })} />
                 {errors.email && <span className='text-red-600'>This field is required</span>}
-                <input className='bg-[#F3F4F6] h-10 mx-auto w-[340px] ps-3 outline-none' placeholder='Password' {...register("password", { required: true })} />
+                <input
+                    className='bg-[#F3F4F6] h-10 mx-auto w-[340px] ps-3 outline-none'
+                    placeholder='Password'
+                    type={showPassword ? 'text' : 'password'}
+                    {...register("password", { required: true })}
+                />
+                <button
+                    type="button"
+                    className="-mt-11 ms-72 w-10 mb-3 left-36 font-semibold text-[#717171] badge text-sm hover:text-[#EA4C24] focus:outline-none"
+                    onClick={togglePassword}
+                >
+                    {showPassword ? 'Hide' : 'Show'}
+                </button>
                 {errors.password && <span className='text-red-600'>This field is required</span>}
                 <button className="bg-[#EA4C24] text-white font-semibold hover:bg-[#ffffff] duration-300 border-2 border-[#EA4C24] hover:text-[#EA4C24] cursor-pointer inline-block rounded shadow py-2 px-5 text-sm">
                     Login

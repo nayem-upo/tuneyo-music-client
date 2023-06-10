@@ -4,14 +4,16 @@ import { useQuery } from '@tanstack/react-query';
 
 const useSelectedCard = () => {
     const { user } = useContext(AuthContext);
+    console.log(user);
     const { refetch, data: selectedClasses = [] } = useQuery({
         queryKey: ['carts', user?.email],
         queryFn: async () => {
             const response = await fetch(`http://localhost:5000/selectedclasses?email=${user?.email}`);
             return response.json();
         },
-    })
-    return [selectedClasses, refetch]
+    });
+    return [selectedClasses, refetch];
 };
+
 
 export default useSelectedCard;

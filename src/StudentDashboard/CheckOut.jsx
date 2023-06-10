@@ -99,7 +99,6 @@ const CheckOut = ({ selectedClass }) => {
                     .then(data => {
                         if (data.acknowledged) {
                             setError("")
-                            console.log('Payment success!');
                             Swal.fire('Payment Successful. Thank You!')
                         }
                     })
