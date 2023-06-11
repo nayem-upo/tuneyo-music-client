@@ -4,12 +4,12 @@
 
 ## List of some key features and functionalities the project:
 
-1. *User registration and authentication*
-2. Class listing and details
-3. Class enrollment
-4. User dashboard
-5. Payment integration
-6. Responsive design
+1. **User registration and authentication**
+2. **Class listing and details**
+3. **Class enrollment**
+4. **User dashboard**
+5. **Payment integration**
+6. **Responsive design**
 
 # Project Functionality
 
@@ -28,9 +28,9 @@ The website has several features that enhance the user experience and provide fu
 These are just a few of the key features implemented in the website. The project aims to provide an intuitive and engaging platform for music enthusiasts to explore classes, learn from experienced instructors, and enhance their musical skills.
 
 
-****Used packages/ technology name**
-1. # Front-end: HTML, CSS, JavaScript, React.js
-2. # Back-end: Node.js, Express.js
-3. # Database: MongoDB
-4. # Payment Integration: Stripe
-5. # Libraries: 
+## Used packages/ technology name**
+1. **Front-end:** HTML, CSS, JavaScript, React.js
+2. **Back-end:** Node.js, Express.js
+3. **Database:** MongoDB
+4. **Payment Integration:** Stripe
+5. **Libraries:** 
