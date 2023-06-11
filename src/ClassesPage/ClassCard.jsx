@@ -4,6 +4,7 @@ import React, { useContext, useEffect, useState } from 'react';
 import { AuthContext } from '../Authenticate/AuthProvider';
 import Swal from 'sweetalert2';
 import { useNavigate } from 'react-router-dom';
+import { motion } from 'framer-motion';
 
 const ClassCard = ({ clasS }) => {
     const { user } = useContext(AuthContext);
@@ -73,18 +74,41 @@ const ClassCard = ({ clasS }) => {
     }
     return (
         <div className={`${availableSeats < 1 ? 'bg-red-300 shadow-md shadow-red-700' : 'bg-white shadow-xl rounded-b-md w-[320px]'}`}>
-            <div className=' '>
+            <motion.div
+                initial={{ opacity: 0, y: 50 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5 }}
+                className=' '
+            >
                 <img className='w-full h-[200px] object-cover shadow-xl' src={classImage} alt="" />
                 <div className='p-5'>
-                    <h1 className='font-semibold items-center gap-2 flex'> <FontAwesomeIcon icon={faMusic} style={{ color: "#EA4C24", }} />Class Name: <span className='text-[#EA4C24]'> {className}</span></h1>
-                    <h1 className='font-semibold items-center gap-2 flex'> <FontAwesomeIcon icon={faChalkboardUser} style={{ color: "#EA4C24", }} />Instructor name: <span className='text-[#EA4C24]'> {instructorName}</span></h1>
+                    <h1 className='font-semibold items-center gap-2 flex'>
+                        <FontAwesomeIcon icon={faMusic} style={{ color: "#EA4C24" }} />
+                        Class Name: <span className='text-[#EA4C24]'> {className}</span>
+                    </h1>
+                    <h1 className='font-semibold items-center gap-2 flex'>
+                        <FontAwesomeIcon icon={faChalkboardUser} style={{ color: "#EA4C24" }} />
+                        Instructor name: <span className='text-[#EA4C24]'> {instructorName}</span>
+                    </h1>
                     <div className=''>
-                        <h1 className='font-semibold items-center gap-2 flex'> <FontAwesomeIcon icon={faDoorOpen} style={{ color: "#EA4C24", }} />Available seats: <span className='text-[#EA4C24]'>{availableSeats}</span></h1>
-                        <h1 className='flex font-semibold items-center gap-2'><FontAwesomeIcon icon={faMoneyCheckDollar} style={{ color: "#EA4C24" }} />Price: <span className='text-[#EA4C24]'>${price}</span></h1>
+                        <h1 className='font-semibold items-center gap-2 flex'>
+                            <FontAwesomeIcon icon={faDoorOpen} style={{ color: "#EA4C24" }} />
+                            Available seats: <span className='text-[#EA4C24]'>{availableSeats}</span>
+                        </h1>
+                        <h1 className='flex font-semibold items-center gap-2'>
+                            <FontAwesomeIcon icon={faMoneyCheckDollar} style={{ color: "#EA4C24" }} />
+                            Price: <span className='text-[#EA4C24]'>${price}</span>
+                        </h1>
                     </div>
                 </div>
-                <button onClick={handleSelectClass} disabled={availableSeats < 1 || filteredUser?.role === "admin" || filteredUser?.role ==="instructor" ? true : ""} className='bg-[#ffffff] w-full items-center text-xl justify-center gap-2 flex text-[#EA4C24] disabled:text-[#e1d1cc] disabled:border-white disabled:cursor-default font-semibold hover:border-[#EA4C24] duration-300 border-2 border-white cursor-pointer rounded-b shadow py-2 px-5'>Select</button>
-            </div>
+                <button
+                    onClick={handleSelectClass}
+                    disabled={availableSeats < 1 || filteredUser?.role === "admin" || filteredUser?.role === "instructor"}
+                    className='bg-[#ffffff] w-full items-center text-xl justify-center gap-2 flex text-[#EA4C24] disabled:text-[#e1d1cc] disabled:border-white disabled:cursor-default font-semibold hover:border-[#EA4C24] duration-300 border-2 border-white cursor-pointer rounded-b shadow py-2 px-5'
+                >
+                    Select
+                </button>
+            </motion.div>
         </div>
     );
 };

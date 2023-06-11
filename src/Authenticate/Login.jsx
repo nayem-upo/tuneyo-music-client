@@ -79,21 +79,21 @@ const Login = () => {
 
 
     return (
-        <div className='flex justify-center pb-20 pt-32 gap-10'>
-            <img className='shadow-md rounded w-[400px] object-cover' src="https://www.steinway.com/.imaging/default/dam/Special-Pianos/pops/pops_builder/pops_rendering/191223-POPS.1760.png/jcr:content.jpg" alt="" />
-            <form className='flex gap-3 flex-col' onSubmit={handleSubmit(handleLogin)}>
-                <p className='text-[#EA4C24] text-3xl font-semibold'>Enter Your Login details!</p>
-                <input className='bg-[#F3F4F6] h-10 mx-auto w-[340px] ps-3 outline-none' placeholder='Email' {...register("email", { required: true })} />
+        <div className='md:flex justify-center pb-20 pt-32 gap-10'>
+            <img className='shadow-md rounded w-[100px] md:mx-0 mx-auto md:w-[400px] object-cover' src="https://www.steinway.com/.imaging/default/dam/Special-Pianos/pops/pops_builder/pops_rendering/191223-POPS.1760.png/jcr:content.jpg" alt="" />
+            <form className='flex gap-3 flex-col md:w-[340px] w-[300px] mx-auto md:mx-0' onSubmit={handleSubmit(handleLogin)}>
+                <p className='text-[#EA4C24] my-4 md:my-0 md:text-3xl text-center md:text-left text-xl font-semibold'>Enter Your Login details!</p>
+                <input className='bg-[#F3F4F6] h-10 mx-auto w-full md:w-[340px] ps-3 outline-none' placeholder='Email' {...register("email", { required: true })} />
                 {errors.email && <span className='text-red-600'>This field is required</span>}
                 <input
-                    className='bg-[#F3F4F6] h-10 mx-auto w-[340px] ps-3 outline-none'
+                    className='bg-[#F3F4F6] h-10 mx-auto w-full md:w-[340px] ps-3 outline-none'
                     placeholder='Password'
                     type={showPassword ? 'text' : 'password'}
                     {...register("password", { required: true })}
                 />
                 <button
                     type="button"
-                    className="-mt-11 ms-72 w-10 mb-3 left-36 font-semibold text-[#717171] badge text-sm hover:text-[#EA4C24] focus:outline-none"
+                    className="-mt-11 md:ms-72 ms-64 w-10 mb-3 left-36 font-semibold text-[#717171] badge text-sm hover:text-[#EA4C24] focus:outline-none"
                     onClick={togglePassword}
                 >
                     {showPassword ? 'Hide' : 'Show'}

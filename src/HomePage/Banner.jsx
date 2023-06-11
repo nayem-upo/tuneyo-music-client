@@ -5,6 +5,7 @@ import "swiper/css";
 import "swiper/css/pagination";
 import SwiperCore, { Autoplay } from 'swiper';
 import { Link } from 'react-router-dom';
+import { motion } from 'framer-motion';
 
 SwiperCore.use([Pagination, Autoplay]);
 
@@ -27,7 +28,13 @@ const Banner = () => {
                     <div className='absolute top-0 py-56 bg-black bg-opacity-60 w-full h-[650px] z-40 '>
                         <h1 className='text-6xl font-semibold w-[500px] mx-20 text-white'>Learn The <span className='text-[#EA4C24]'>Music</span> From The Masters</h1>
                         <p className='mx-20 text-xl text-white my-6 w-[600px]'>Unleash Your Child's Musical Potential at Our Fun and Engaging Kids Music School!</p>
-                        <Link to="/classes"><button className='bg-[#EA4C24] mx-20 hover:bg-[#ffffff] duration-300 border-2 border-[#EA4C24] hover:text-[#EA4C24] py-3 px-6 rounded-lg text-white font-semibold'>Learn More</button></Link>
+                        <Link to="/classes">
+                            <motion.button
+                                whileHover={{ scale: 1.1 }}
+                                className='bg-[#EA4C24] mx-20 hover:bg-[#ffffff] duration-300 border-2 border-[#EA4C24] hover:text-[#EA4C24] py-3 px-6 rounded-lg text-white font-semibold'>
+                                Learn More
+                            </motion.button>
+                        </Link>
                     </div>
                 </SwiperSlide>
                 <SwiperSlide>

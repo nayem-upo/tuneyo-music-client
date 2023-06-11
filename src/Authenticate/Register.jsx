@@ -107,33 +107,33 @@ const Register = () => {
     };
 
     return (
-        <div className='flex justify-center pb-20 pt-32 gap-10'>
-            <img className='shadow-md rounded w-[400px] h-[530px] object-cover' src="https://www.steinway.com/.imaging/default/dam/Special-Pianos/pops/pops_builder/pops_rendering/191223-POPS.1760.png/jcr:content.jpg" alt="" />
-            <form className='flex gap-3 flex-col' onSubmit={handleSubmit(handleRegister)}>
-                <p className='text-[#EA4C24] text-3xl font-semibold'>Create An Account!</p>
-                <input className='bg-[#F3F4F6] h-10 mx-auto w-[340px] ps-3 outline-none' placeholder='Full Name' {...register("name", { required: true })} />
+        <div className='md:flex justify-center pb-20 pt-32 gap-10'>
+            <img className='shadow-md rounded w-[100px] md:mx-0 mx-auto md:w-[400px] object-cover' src="https://www.steinway.com/.imaging/default/dam/Special-Pianos/pops/pops_builder/pops_rendering/191223-POPS.1760.png/jcr:content.jpg" alt="" />
+            <form className='flex gap-3 flex-col md:w-[340px] w-[300px] mx-auto md:mx-0' onSubmit={handleSubmit(handleRegister)}>
+                <p className='text-[#EA4C24] my-4 md:my-0 md:text-3xl text-center md:text-left text-xl font-semibold'>Create An Account!</p>
+                <input className='bg-[#F3F4F6] h-10 mx-auto w-full md:w-[340px] ps-3 outline-none' placeholder='Full Name' {...register("name", { required: true })} />
                 {errors.name && <span className='text-red-600'>Please enter your full name</span>}
-                <input className='bg-[#F3F4F6] h-10 mx-auto w-[340px] ps-3 outline-none' placeholder='Email' {...register("email", { required: true })} />
+                <input className='bg-[#F3F4F6] h-10 mx-auto w-full md:w-[340px] ps-3 outline-none' placeholder='Email' {...register("email", { required: true })} />
                 {errors.email && <span className='text-red-600'>Enter your email</span>}
-                <input className='bg-[#F3F4F6] h-10 mx-auto w-[340px] ps-3 outline-none' placeholder='Password' type={showPassword ? 'text' : 'password'} {...register("password", { required: true })} />
+                <input className='bg-[#F3F4F6] h-10 mx-auto w-full md:w-[340px] ps-3 outline-none' placeholder='Password' type={showPassword ? 'text' : 'password'} {...register("password", { required: true })} />
                 {errors.password && <span className='text-red-600'>Enter at least 6 characters password</span>}
                 <button
                     type="button"
-                    className="-mt-11 ms-72 w-10 mb-3 left-36 font-semibold text-[#717171] badge text-sm hover:text-[#EA4C24] focus:outline-none"
+                    className="-mt-11 md:ms-72 ms-64 w-10 mb-3 left-36 font-semibold text-[#717171] badge text-sm hover:text-[#EA4C24] focus:outline-none"
                     onClick={togglePassword}
                 >
                     {showPassword ? 'Hide' : 'Show'}
                 </button>
-                <input className='bg-[#F3F4F6] h-10 mx-auto w-[340px] ps-3 outline-none' placeholder='Confirm Password' type={showConfirmPassword ? 'text' : 'password'} {...register("confirm", { required: true })} />
+                <input className='bg-[#F3F4F6] h-10 mx-auto w-full md:w-[340px] ps-3 outline-none' placeholder='Confirm Password' type={showConfirmPassword ? 'text' : 'password'} {...register("confirm", { required: true })} />
                 {errors.confirm && <span className='text-red-600'>Please confirm your password</span>}
                 <button
                     type="button"
-                    className="-mt-11 ms-72 w-10 mb-3 left-36 font-semibold text-[#717171] badge text-sm hover:text-[#EA4C24] focus:outline-none"
+                    className="-mt-11 md:ms-72 ms-64 w-10 mb-3 left-36 font-semibold text-[#717171] badge text-sm hover:text-[#EA4C24] focus:outline-none"
                     onClick={toggleConfirmPassword}
                 >
                     {showConfirmPassword ? 'Hide' : 'Show'}
                 </button>
-                <input className='bg-[#F3F4F6] h-10 mx-auto w-[340px] ps-3 outline-none' placeholder='Photo URL' {...register("photo", { required: true })} />
+                <input className='bg-[#F3F4F6] h-10 mx-auto w-full md:w-[340px] ps-3 outline-none' placeholder='Photo URL' {...register("photo", { required: true })} />
                 {errors.photo && <span className='text-red-600'>Photo URL is required</span>}
                 {error &&
                     <p className='text-red-600 w-[340px] text-center'>{error}</p>

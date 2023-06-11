@@ -73,7 +73,7 @@ const Footer = () => {
 
                             9 AM - 5 PM , Monday - Saturday</h1>
                         <p className='my-2'>Building a foundation of musical excellence, one note at a time, for young maestros at TuneYo Music</p>
-                        <button className='bg-[#EA4C24] w-[180px]  hover:bg-[#ffffff] duration-300 border-2 border-[#EA4C24] hover:text-[#EA4C24] py-3 px-6 rounded-lg text-white font-semibold'>Join the Class</button>
+                        <Link to="/classes"><button className='bg-[#EA4C24] w-[180px]  hover:bg-[#ffffff] duration-300 border-2 border-[#EA4C24] hover:text-[#EA4C24] py-3 px-6 rounded-lg text-white font-semibold'>Join the Class</button></Link>
                     </div>
                 </div>
             </div>

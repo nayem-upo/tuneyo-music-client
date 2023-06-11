@@ -7,12 +7,11 @@ const PopularClasses = () => {
         <div className='py-10'>
             <div className='text-center'>
                 <h1 className='text-[#EA4C24] text-3xl font-semibold'>Our Class</h1>
-                <h1 className='text-4xl font-semibold'>Our Popular Music Class</h1>
-                <p className='my-3 font-semibold'>Unlock Your Child's Musical Potential with Our Popular Music Classes!</p>
+                <h1 className='md:text-4xl text-2xl font-semibold'>Our Popular Music Class</h1>
+                <p className='my-3 hidden md:block font-semibold'>Unlock Your Child's Musical Potential with Our Popular Music Classes!</p>
             </div>
-
-            <div className='grid grid-cols-3 gap-10 justify-items-center mx-10'>
-                <div className='text-center w-[350px] shadow-xl py-7 px-10 rounded duration-300 hover:animate-pulse hover:scale-105'>
+            <div className='grid md:grid-cols-3 gap-10 justify-items-center md:mx-10'>
+                <div className='text-center w-[90%] md:w-[350px] shadow-xl py-7 px-10 rounded duration-300 hover:animate-pulse hover:scale-105'>
                     <FontAwesomeIcon className='text-[90px]' icon={faGuitar} style={{ color: "#ff570f", }} />
                     <h1 className='text-2xl font-bold pt-3'>Guitar</h1>
                     <p className='py-2'>Discover the Joy of Guitar with Our Fun and Engaging Lessons!</p>
@@ -25,7 +24,7 @@ const PopularClasses = () => {
                         </span>
                     </div>
                 </div>
-                <div className='text-center w-[350px] hover:shadow-xl py-7 px-10 rounded duration-300 hover:animate-pulse hover:scale-105'>
+                <div className='text-center w-[90%] md:w-[350px] hover:shadow-xl py-7 px-10 rounded duration-300 hover:animate-pulse hover:scale-105'>
                     <FontAwesomeIcon className='text-[90px]' icon={faMicrophoneLines} style={{ color: "#ff570f", }} />
                     <h1 className='text-2xl font-bold pt-3'>Vocal</h1>
                     <p className='py-2'>Nurture Your Child's Musical Journey with Engaging and Inspiring Vocal Lessons!</p>
@@ -38,7 +37,7 @@ const PopularClasses = () => {
                         </span>
                     </div>
                 </div>
-                <div className='text-center w-[350px] hover:shadow-xl py-7 px-10 rounded duration-300 hover:animate-pulse hover:scale-105'>
+                <div className='text-center w-[90%] md:w-[350px] hover:shadow-xl py-7 px-10 rounded duration-300 hover:animate-pulse hover:scale-105'>
                     <FontAwesomeIcon className='text-[90px]' icon={faDrum} style={{ color: "#ff570f", }} />
                     <h1 className='text-2xl font-bold pt-3'>Drum</h1>
                     <p className='py-2'>Drum Beats and Rhythms: Unleash Your Child's Inner Drummer with Our Engaging Drum Lessons!</p>
@@ -51,7 +50,7 @@ const PopularClasses = () => {
                         </span>
                     </div>
                 </div>
-                <div className='text-center w-[350px] hover:shadow-xl py-7 px-10 rounded duration-300 hover:animate-pulse hover:scale-105'>
+                <div className='text-center w-[90%] md:w-[350px] hover:shadow-xl py-7 px-10 rounded duration-300 hover:animate-pulse hover:scale-105'>
                     <svg
                         className='mx-auto'
                         height="100px"
@@ -114,7 +113,7 @@ const PopularClasses = () => {
                         </span>
                     </div>
                 </div>
-                <div className='text-center w-[350px] hover:shadow-xl py-7 px-10 rounded duration-300 hover:animate-pulse hover:scale-105'>
+                <div className='text-center w-[90%] md:w-[350px] hover:shadow-xl py-7 px-10 rounded duration-300 hover:animate-pulse hover:scale-105'>
                     <svg
                         fill="#ff570f"
                         height="100px"
@@ -159,7 +158,7 @@ const PopularClasses = () => {
                         </span>
                     </div>
                 </div>
-                <div className='text-center w-[350px] hover:shadow-xl py-7 px-10 rounded duration-300 hover:animate-pulse hover:scale-105'>
+                <div className='text-center w-[90%] md:w-[350px] hover:shadow-xl py-7 px-10 rounded duration-300 hover:animate-pulse hover:scale-105'>
                     <svg
                         className='mx-auto'
                         width="70px"

@@ -8,7 +8,6 @@ const Classes = () => {
         const res = await fetch(`http://localhost:5000/classes`)
         return res.json();
     })
-
     const approvedClasses = classes.filter(aproveclass => aproveclass.status === "approved")
     return (
         <div>
