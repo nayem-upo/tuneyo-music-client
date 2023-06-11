@@ -6,7 +6,7 @@ import { AuthContext } from '../Authenticate/AuthProvider';
 const MyAddedClasses = () => {
     const { user } = useContext(AuthContext);
     const { data: addedclasses = [], refetch } = useQuery(['addedclasses'], async () => {
-        const res = await fetch(`http://localhost:5000/classes/${user?.email}`)
+        const res = await fetch(`https://tuneyo-server.vercel.app/classes/${user?.email}`)
         return res.json();
     })
     return (

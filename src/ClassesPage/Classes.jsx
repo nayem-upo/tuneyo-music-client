@@ -2,12 +2,19 @@ import { useQuery } from '@tanstack/react-query';
 import React from 'react';
 import { Parallax } from 'react-parallax';
 import ClassCard from './ClassCard';
+import axios from 'axios';
 
 const Classes = () => {
     const { data: classes = [], refetch } = useQuery(['classes'], async () => {
-        const res = await fetch(`http://localhost:5000/classes`)
-        return res.json();
-    })
+        try {
+            //Axios fetch here
+            const response = await axios.get('https://tuneyo-server.vercel.app/classes');
+            return response.data;
+        } catch (error) {
+            console.error(error);
+        }
+    });
+
     const approvedClasses = classes.filter(aproveclass => aproveclass.status === "approved")
     return (
         <div>

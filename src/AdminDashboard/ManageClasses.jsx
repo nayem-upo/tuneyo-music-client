@@ -4,7 +4,7 @@ import ManageClassCard from './ManageClassCard';
 
 const ManageClasses = () => {
     const { data: allclasses = [], refetch } = useQuery(['allclasses'], async () => {
-        const res = await fetch(`http://localhost:5000/classes`)
+        const res = await fetch(`https://tuneyo-server.vercel.app/classes`)
         return res.json();
     })
     return (
@@ -19,14 +19,14 @@ const ManageClasses = () => {
                         <thead>
                             <tr>
                                 <th className="w-10 title-font tracking-wider font-medium text-white text-sm text-center bg-[#EA4C24] rounded-tl-lg">#</th>
-                                <th className="px-4 py-3 title-font tracking-wider font-medium text-white text-xs bg-[#EA4C24] uppercase">IMAGE</th>
-                                <th className="px-4 py-3 title-font tracking-wider font-medium text-white text-xs bg-[#EA4C24] uppercase">Class Name</th>
-                                <th className="px-4 py-3 title-font tracking-wider font-medium text-white text-xs bg-[#EA4C24] uppercase">Instructor</th>
-                                <th className="px-4 py-3 title-font tracking-wider font-medium text-white text-xs bg-[#EA4C24] uppercase">Instructor email</th>
-                                <th className="px-4 py-3 title-font tracking-wider font-medium text-white text-xs bg-[#EA4C24] uppercase">Available seats</th>
-                                <th className="px-4 py-3 title-font tracking-wider font-medium text-white text-xs bg-[#EA4C24]">PRICE</th>
-                                <th className="px-4 py-3 title-font tracking-wider font-medium text-white text-xs bg-[#EA4C24] uppercase">Status</th>
-                                <th className="px-4 py-3 title-font tracking-wider font-medium text-white text-xs bg-[#EA4C24] rounded-tr-lg">ACTION</th>
+                                <th className="px-2 py-3 title-font tracking-wider font-medium text-white text-xs bg-[#EA4C24] uppercase">IMAGE</th>
+                                <th className="px-2 py-3 title-font tracking-wider font-medium text-white text-xs bg-[#EA4C24] uppercase">Class Name</th>
+                                <th className="px-2 py-3 title-font tracking-wider font-medium text-white text-xs bg-[#EA4C24] uppercase">Instructor</th>
+                                <th className="px-2 py-3 title-font tracking-wider font-medium text-white text-xs bg-[#EA4C24] uppercase">Instructor email</th>
+                                <th className="px-2 py-3 title-font tracking-wider font-medium text-white text-xs bg-[#EA4C24] uppercase">Available seats</th>
+                                <th className="px-2 py-3 title-font tracking-wider font-medium text-white text-xs bg-[#EA4C24]">PRICE</th>
+                                <th className="px-2 py-3 title-font tracking-wider font-medium text-white text-xs bg-[#EA4C24] uppercase">Status</th>
+                                <th className="px-2 w-32 py-3 title-font tracking-wider font-medium text-white text-xs bg-[#EA4C24] rounded-tr-lg">ACTION</th>
                             </tr>
                         </thead>
                         <tbody className='text-[#EA4C24] font-semibold'>

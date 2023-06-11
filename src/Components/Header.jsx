@@ -98,7 +98,17 @@ const Header = () => {
                                     <li>
                                         <a className="justify-between">
                                             {user?.displayName}
-                                            <span className="badge">New</span>
+                                            <span className="badge">
+                                                {filteredUser?.role === "user" &&
+                                                    "Student"
+                                                }
+                                                {filteredUser?.role === "instructor" &&
+                                                    "Instructor"
+                                                }
+                                                {filteredUser?.role === "admin" &&
+                                                    "Admin"
+                                                }
+                                            </span>
                                         </a>
                                     </li>
                                     {filteredUser?.role === "user" &&

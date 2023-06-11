@@ -21,7 +21,7 @@ const Login = () => {
             .then((userCredential) => {
                 const user = userCredential.user;
                 const saveUser = { name: user.displayName, email: user.email, role: "user" }
-                fetch('http://localhost:5000/users', {
+                fetch('https://tuneyo-server.vercel.app/users', {
                     method: 'POST',
                     headers: {
                         "content-type": "application/json"
@@ -52,7 +52,7 @@ const Login = () => {
                 setSuccess("Login Successfull")
                 const user = result.user;
                 const saveUser = { name: user.displayName, email: user.email, role: "user" }
-                fetch('http://localhost:5000/users', {
+                fetch('https://tuneyo-server.vercel.app/users', {
                     method: 'POST',
                     headers: {
                         "content-type": "application/json"

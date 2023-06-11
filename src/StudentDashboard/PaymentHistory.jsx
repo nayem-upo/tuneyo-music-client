@@ -5,7 +5,7 @@ import { useQuery } from '@tanstack/react-query';
 const PaymentHistory = () => {
     const { user } = useContext(AuthContext);
     const { data: history = [], refetch } = useQuery(['history'], async () => {
-        const res = await fetch(`http://localhost:5000/payments/${user?.email}`)
+        const res = await fetch(`https://tuneyo-server.vercel.app/payments/${user?.email}`)
         return res.json();
     })
     return (

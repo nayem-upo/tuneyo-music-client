@@ -8,7 +8,7 @@ const AddClass = () => {
     const { register, handleSubmit, watch, formState: { errors } } = useForm();
     const handleAddCard = (data) => {
         const { _id, className, classImage, instructorName, instructorEmail, availableSeats, price } = data;
-        
+
 
         const newClass = {
             className,
@@ -21,7 +21,7 @@ const AddClass = () => {
             enrolled: 0,
             feedback: "No Feedback"
         }
-        fetch('http://localhost:5000/classes', {
+        fetch('https://tuneyo-server.vercel.app/classes', {
             method: "POST",
             headers: {
                 'content-type': 'application/json'
@@ -30,7 +30,6 @@ const AddClass = () => {
         })
             .then(res => res.json())
             .then(data => {
-                console.log(data);
                 if (data.insertedId) {
                     Swal.fire({
                         title: 'Success!',

@@ -30,11 +30,13 @@ import AdminDashboard from './AdminDashboard/AdminDashboard';
 import ManageClasses from './AdminDashboard/ManageClasses';
 import ManageUsers from './AdminDashboard/ManageUsers';
 import AdminRoute from './Authenticate/Routes/AdminRoute';
+import ErrorPage from './Authenticate/Routes/ErrorPage';
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <Layouts></Layouts>,
+    errorElement: <ErrorPage />,
     children: [
       {
         path: "/",
@@ -79,7 +81,7 @@ const router = createBrowserRouter([
           {
             path: "/studentdashboard/payment/:id",
             element: <Private><StudentRoute><Payment></Payment></StudentRoute></Private>,
-            loader: ({ params }) => fetch(`http://localhost:5000/selectedclasses/${params.id}`)
+            loader: ({ params }) => fetch(`https://tuneyo-server.vercel.app/selectedclasses/${params.id}`)
           },
         ]
       },
@@ -98,7 +100,7 @@ const router = createBrowserRouter([
           {
             path: "/instructordashboard/update/:id",
             element: <InstructorRoute><UpdateClass></UpdateClass></InstructorRoute>,
-            loader: ({ params }) => fetch(`http://localhost:5000/classes/toupdate/${params.id}`)
+            loader: ({ params }) => fetch(`https://tuneyo-server.vercel.app/classes/toupdate/${params.id}`)
           },
         ]
       },

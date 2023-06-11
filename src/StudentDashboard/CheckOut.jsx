@@ -18,7 +18,7 @@ const CheckOut = ({ selectedClass }) => {
     useEffect(() => {
         const fetchClientSecret = async () => {
             try {
-                const response = await fetch('http://localhost:5000/create-payment-intent', {
+                const response = await fetch('https://tuneyo-server.vercel.app/create-payment-intent', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({ price }),
@@ -73,11 +73,11 @@ const CheckOut = ({ selectedClass }) => {
                 setError(confirmError.message);
             }
             else if (paymentIntent) {
-                const response = await fetch(`http://localhost:5000/selectedclasses/${_id}`, {
+                const response = await fetch(`https://tuneyo-server.vercel.app/selectedclasses/${_id}`, {
                     method: 'PATCH',
                 });
                 //reducing available seats by 1
-                const res = await fetch(`http://localhost:5000/classes/${className}`, {
+                const res = await fetch(`https://tuneyo-server.vercel.app/classes/${className}`, {
                     method: 'PATCH',
                 });
                 const data = await res.json();
@@ -89,7 +89,7 @@ const CheckOut = ({ selectedClass }) => {
                     classImage
                 }
                 //post a payment for show history
-                fetch('http://localhost:5000/payments', {
+                fetch('https://tuneyo-server.vercel.app/payments', {
                     method: "POST",
                     headers: {
                         "content-type": "application/json"

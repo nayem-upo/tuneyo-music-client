@@ -7,7 +7,7 @@ import { useQuery } from '@tanstack/react-query';
 const EnrolledClasses = () => {
     const { user } = useContext(AuthContext);
     const { data: selectedClasses = [], refetch } = useQuery(['selectedClasses'], async () => {
-        const res = await fetch(`http://localhost:5000/selectedclasses/student/${user?.email}`)
+        const res = await fetch(`https://tuneyo-server.vercel.app/selectedclasses/student/${user?.email}`)
         return res.json();
     })
     const onlyPaidItem = selectedClasses.filter(selected => selected.type === "paid");

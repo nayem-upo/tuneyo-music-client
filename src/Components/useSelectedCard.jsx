@@ -4,11 +4,10 @@ import { useQuery } from '@tanstack/react-query';
 
 const useSelectedCard = () => {
     const { user } = useContext(AuthContext);
-    console.log(user);
     const { refetch, data: selectedClasses = [] } = useQuery({
         queryKey: ['carts', user?.email],
         queryFn: async () => {
-            const response = await fetch(`http://localhost:5000/selectedclasses?email=${user?.email}`);
+            const response = await fetch(`https://tuneyo-server.vercel.app/selectedclasses?email=${user?.email}`);
             return response.json();
         },
     });

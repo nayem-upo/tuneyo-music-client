@@ -13,7 +13,7 @@ const ClassCard = ({ clasS }) => {
     const [isScrolled, setIsScrolled] = useState(false);
     const navigate = useNavigate();
     useEffect(() => {
-        fetch('http://localhost:5000/users')
+        fetch('https://tuneyo-server.vercel.app/users')
             .then(res => res.json())
             .then(data => setAllUsers(data))
     }, [])
@@ -47,7 +47,7 @@ const ClassCard = ({ clasS }) => {
             type: "selected"
         }
 
-        fetch('http://localhost:5000/selectedclasses', {
+        fetch('https://tuneyo-server.vercel.app/selectedclasses', {
             method: "POST",
             headers: {
                 "content-type": "application/json"

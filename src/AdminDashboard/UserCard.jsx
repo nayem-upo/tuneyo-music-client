@@ -8,7 +8,7 @@ const UserCard = ({ user, index, refetch }) => {
     const { name, email, _id, role } = user;
 
     const handleAdmin = (id, role) => {
-        fetch(`http://localhost:5000/users/${id}?role=${role}`, {
+        fetch(`https://tuneyo-server.vercel.app/users/${id}?role=${role}`, {
             method: "PATCH"
         })
             .then(res => res.json())
@@ -28,7 +28,7 @@ const UserCard = ({ user, index, refetch }) => {
     }
 
     const handleInstructor = (id, role) => {
-        fetch(`http://localhost:5000/users/${id}?role=${role}`, {
+        fetch(`https://tuneyo-server.vercel.app/users/${id}?role=${role}`, {
             method: "PATCH"
         })
             .then(res => res.json())

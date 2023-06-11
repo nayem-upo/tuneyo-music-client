@@ -17,7 +17,7 @@ const ManageClassCard = ({ clasS, index, refetch }) => {
             status: "approved",
             feedback: "No Feedback"
         };
-        fetch(`http://localhost:5000/classes/${id}`, {
+        fetch(`https://tuneyo-server.vercel.app/classes/${id}`, {
             method: "PUT",
             headers: {
                 'content-type': 'application/json'
@@ -47,7 +47,7 @@ const ManageClassCard = ({ clasS, index, refetch }) => {
             status: "denied",
             feedback: "No Feedback"
         };
-        fetch(`http://localhost:5000/classes/${id}`, {
+        fetch(`https://tuneyo-server.vercel.app/classes/${id}`, {
             method: "PUT",
             headers: {
                 'content-type': 'application/json'
@@ -79,7 +79,7 @@ const ManageClassCard = ({ clasS, index, refetch }) => {
             feedback: feedback
         };
 
-        fetch(`http://localhost:5000/classes/${id}`, {
+        fetch(`https://tuneyo-server.vercel.app/classes/${id}`, {
             method: "PUT",
             headers: {
                 'content-type': 'application/json'

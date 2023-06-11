@@ -4,13 +4,20 @@ import useSelectedCard from '../Components/useSelectedCard';
 import Swal from 'sweetalert2';
 import { useQuery } from '@tanstack/react-query';
 import { AuthContext } from '../Authenticate/AuthProvider';
+import axios from 'axios';
 
 const SelectedClasses = () => {
     const { user } = useContext(AuthContext);
+    //axios fetch
     const { data: selectedClasses = [], refetch } = useQuery(['selectedClasses'], async () => {
-        const res = await fetch(`http://localhost:5000/selectedclasses/student/${user?.email}`)
-        return res.json();
-    })
+        try {
+            const response = await axios.get(`https://tuneyo-server.vercel.app/selectedclasses/student/${user?.email}`);
+            return response.data;
+        } catch (error) {
+            console.error(error);
+        }
+    });
+
     const onlySelected = selectedClasses.filter(selected => selected.type === "selected");
 
     const handleDelete = (_id) => {
@@ -24,7 +31,7 @@ const SelectedClasses = () => {
             confirmButtonText: 'Yes, delete it!'
         }).then((result) => {
             if (result.isConfirmed) {
-                fetch(`http://localhost:5000/selectedclasses/${_id}`, {
+                fetch(`https://tuneyo-server.vercel.app/selectedclasses/${_id}`, {
                     method: "DELETE"
                 })
                     .then(res => res.json())
@@ -73,8 +80,8 @@ const SelectedClasses = () => {
                                 </tbody>
                             </table>
                             {
-                                onlySelected.length === 0 &&
-                                <p className='w-full text-center py-5 text-2xl font-semibold text-[#EA4C24]'>You have not select any class yet!</p>
+                                selectedClasses.length === 0 &&
+                                <p className='w-full text-center py-5 text-2xl font-semibold text-[#EA4C24]'>You have no selected class!</p>
                             }
                         </div>
                     </div>
