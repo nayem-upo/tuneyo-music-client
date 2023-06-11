@@ -1,6 +1,6 @@
 "# b712-summer-camp-client-side-nayem-upo" 
 # TuneYo- The music school
-## Live site link: 
+## Live site link: https://tuneyo-8be99.web.app/
 
 ## List of some key features and functionalities the project:
 
@@ -33,4 +33,5 @@ These are just a few of the key features implemented in the website. The project
 2. **Back-end:** Node.js, Express.js
 3. **Database:** MongoDB
 4. **Payment Integration:** Stripe
-5. **Libraries:** 
+5. **Additional packages and Libraries:** Firebase, swiper, React Router, Tailwind, React Router DOM, Framer Motion,
+Axios, Daisyui, Fontawesome, React-parallax

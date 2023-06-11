@@ -4,12 +4,13 @@ import React, { useContext, useEffect, useState } from 'react';
 import { AuthContext } from '../Authenticate/AuthProvider';
 import Swal from 'sweetalert2';
 import { useNavigate } from 'react-router-dom';
-import { motion } from 'framer-motion';
+import { AnimatePresence, motion } from 'framer-motion';
 
 const ClassCard = ({ clasS }) => {
     const { user } = useContext(AuthContext);
     const { _id, className, classImage, instructorName, instructorEmail, availableSeats, price } = clasS;
     const [allUsers, setAllUsers] = useState([]);
+    const [isScrolled, setIsScrolled] = useState(false);
     const navigate = useNavigate();
     useEffect(() => {
         fetch('http://localhost:5000/users')
@@ -18,17 +19,8 @@ const ClassCard = ({ clasS }) => {
     }, [])
     const filteredUser = allUsers.find(userr => userr.email === user?.email)
 
+
     const handleSelectClass = (id) => {
-        const selectedClass = {
-            className,
-            classImage,
-            instructorEmail,
-            instructorName,
-            availableSeats,
-            price,
-            studentEmail: user.email,
-            type: "selected"
-        }
         if (!user) {
             Swal.fire({
                 title: 'Please login before you select a class!',
@@ -44,6 +36,17 @@ const ClassCard = ({ clasS }) => {
             })
             return;
         }
+        const selectedClass = {
+            className,
+            classImage,
+            instructorEmail,
+            instructorName,
+            availableSeats,
+            price,
+            studentEmail: user.email,
+            type: "selected"
+        }
+
         fetch('http://localhost:5000/selectedclasses', {
             method: "POST",
             headers: {
@@ -72,42 +75,64 @@ const ClassCard = ({ clasS }) => {
                 })
             })
     }
+    const handleScroll = () => {
+        const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+        const cardTop = document.getElementById(`card-${_id}`)?.offsetTop || 0;
+        const windowHeight = window.innerHeight || document.documentElement.clientHeight;
+        const cardHeight = document.getElementById(`card-${_id}`)?.offsetHeight || 0;
+
+        if (scrollTop + windowHeight >= cardTop + cardHeight / 2) {
+            setIsScrolled(true);
+        } else {
+            setIsScrolled(false);
+        }
+    };
+
+    useEffect(() => {
+        window.addEventListener('scroll', handleScroll);
+        return () => {
+            window.removeEventListener('scroll', handleScroll);
+        };
+    }, []);
     return (
         <div className={`${availableSeats < 1 ? 'bg-red-300 shadow-md shadow-red-700' : 'bg-white shadow-xl rounded-b-md w-[320px]'}`}>
             <motion.div
+                id={`card-${_id}`}
                 initial={{ opacity: 0, y: 50 }}
-                animate={{ opacity: 1, y: 0 }}
+                animate={isScrolled ? { opacity: 1, y: 0 } : {}}
                 transition={{ duration: 0.5 }}
-                className=' '
+                className={`${availableSeats < 1 ? 'bg-red-300 shadow-md shadow-red-700' : 'bg-white shadow-xl rounded-b-md w-[320px]'}`}
             >
-                <img className='w-full h-[200px] object-cover shadow-xl' src={classImage} alt="" />
-                <div className='p-5'>
-                    <h1 className='font-semibold items-center gap-2 flex'>
-                        <FontAwesomeIcon icon={faMusic} style={{ color: "#EA4C24" }} />
-                        Class Name: <span className='text-[#EA4C24]'> {className}</span>
-                    </h1>
-                    <h1 className='font-semibold items-center gap-2 flex'>
-                        <FontAwesomeIcon icon={faChalkboardUser} style={{ color: "#EA4C24" }} />
-                        Instructor name: <span className='text-[#EA4C24]'> {instructorName}</span>
-                    </h1>
-                    <div className=''>
+                <div>
+                    <img className='w-full h-[200px] object-cover shadow-xl' src={classImage} alt="" />
+                    <div className='p-5'>
                         <h1 className='font-semibold items-center gap-2 flex'>
-                            <FontAwesomeIcon icon={faDoorOpen} style={{ color: "#EA4C24" }} />
-                            Available seats: <span className='text-[#EA4C24]'>{availableSeats}</span>
+                            <FontAwesomeIcon icon={faMusic} style={{ color: "#EA4C24" }} />
+                            Class Name: <span className='text-[#EA4C24]'> {className}</span>
                         </h1>
-                        <h1 className='flex font-semibold items-center gap-2'>
-                            <FontAwesomeIcon icon={faMoneyCheckDollar} style={{ color: "#EA4C24" }} />
-                            Price: <span className='text-[#EA4C24]'>${price}</span>
+                        <h1 className='font-semibold items-center gap-2 flex'>
+                            <FontAwesomeIcon icon={faChalkboardUser} style={{ color: "#EA4C24" }} />
+                            Instructor name: <span className='text-[#EA4C24]'> {instructorName}</span>
                         </h1>
+                        <div>
+                            <h1 className='font-semibold items-center gap-2 flex'>
+                                <FontAwesomeIcon icon={faDoorOpen} style={{ color: "#EA4C24" }} />
+                                Available seats: <span className='text-[#EA4C24]'>{availableSeats}</span>
+                            </h1>
+                            <h1 className='flex font-semibold items-center gap-2'>
+                                <FontAwesomeIcon icon={faMoneyCheckDollar} style={{ color: "#EA4C24" }} />
+                                Price: <span className='text-[#EA4C24]'>${price}</span>
+                            </h1>
+                        </div>
                     </div>
+                    <button
+                        onClick={handleSelectClass}
+                        disabled={availableSeats < 1 || filteredUser?.role === "admin" || filteredUser?.role === "instructor"}
+                        className='bg-[#ffffff] w-full items-center text-xl justify-center gap-2 flex text-[#EA4C24] disabled:text-[#e1d1cc] disabled:border-white disabled:cursor-default font-semibold hover:border-[#EA4C24] duration-300 border-2 border-white cursor-pointer rounded-b shadow py-2 px-5'
+                    >
+                        Select
+                    </button>
                 </div>
-                <button
-                    onClick={handleSelectClass}
-                    disabled={availableSeats < 1 || filteredUser?.role === "admin" || filteredUser?.role === "instructor"}
-                    className='bg-[#ffffff] w-full items-center text-xl justify-center gap-2 flex text-[#EA4C24] disabled:text-[#e1d1cc] disabled:border-white disabled:cursor-default font-semibold hover:border-[#EA4C24] duration-300 border-2 border-white cursor-pointer rounded-b shadow py-2 px-5'
-                >
-                    Select
-                </button>
             </motion.div>
         </div>
     );
