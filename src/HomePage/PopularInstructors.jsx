@@ -1,14 +1,16 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import { AuthContext } from '../Authenticate/AuthProvider';
 
 const PopularInstructors = () => {
+    const { theme } = useContext(AuthContext);
     return (
-        <div className='md:py-20'>
-            <div className='text-center'>
+        <div className={`${theme? "dark": ""}`}>
+            <div className='text-center dark:bg-[#333333] dark:text-white pt-10 md:pt-20'>
                 <h1 className='text-[#EA4C24] text-3xl font-semibold'>Our Instructors</h1>
                 <h1 className='md:text-4xl text-2xl font-semibold'>Our Popular Instructors</h1>
-                <p className='my-3 hidden md:block font-semibold'>Meet Our Esteemed Instructors: Passionate Experts Ready to Guide Your Musical Journey!</p>
+                <p className='py-3 hidden md:block font-semibold'>Meet Our Esteemed Instructors: Passionate Experts Ready to Guide Your Musical Journey!</p>
             </div>
-            <div className='grid md:grid-cols-3 justify-items-center gap-10 md:mx-20 my-14'>
+            <div className='grid md:grid-cols-3 justify-items-center gap-10 md:px-20 py-14  dark:bg-[#333333]'>
                 <div>
                     <div className="hero w-[90%] md:w-[340px] md:h-[500px] rounded-md" style={{ backgroundImage: `url("https://www.nzmusicteachers.co.nz/wp-content/uploads/2022/06/Adrian-22-700x1050.jpg")` }}>
                         <div className="hero-overlay bg-opacity-0 hover:bg-opacity-40"></div>

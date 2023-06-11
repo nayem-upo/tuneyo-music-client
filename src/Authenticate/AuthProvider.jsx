@@ -11,7 +11,21 @@ const AuthProvider = ({ children }) => {
     const [loading, setLoading] = useState(true);
     const [user, setUser] = useState(null)
     const [allUsers, setAllUsers] = useState([]);
+    const [theme, setTheme] = useState(false);
 
+    useEffect(() => {
+        const savedTheme = localStorage.getItem("theme");
+        if (savedTheme) {
+            setTheme(JSON.parse(savedTheme));
+        }
+    }, []);
+
+    const toggleTheme = () => {
+        const newTheme = !theme;
+        setTheme(newTheme);
+        localStorage.setItem("theme", JSON.stringify(newTheme));
+    };
+    
     useEffect(() => {
         fetch('https://tuneyo-server.vercel.app/users')
             .then(res => res.json())
@@ -46,6 +60,8 @@ const AuthProvider = ({ children }) => {
         googleLogin,
         userLogOut,
         filteredUser,
+        theme,
+        toggleTheme
     }
     useEffect(() => {
         const unsubscribe = onAuthStateChanged(auth, (loggedUser) => {
