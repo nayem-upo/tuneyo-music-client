@@ -1,15 +1,15 @@
 "# b712-summer-camp-client-side-nayem-upo" 
-# Project Title
-## TuneYo- The music school
+# TuneYo- The music school
+## Live site link: 
 
 ## List of some key features and functionalities the project:
 
-User registration and authentication
-Class listing and details
-Class enrollment
-User dashboard
-Payment integration
-Responsive design
+1. *User registration and authentication*
+2. Class listing and details
+3. Class enrollment
+4. User dashboard
+5. Payment integration
+6. Responsive design
 
 # Project Functionality
 
