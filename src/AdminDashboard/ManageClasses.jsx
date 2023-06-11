@@ -13,9 +13,9 @@ const ManageClasses = () => {
                 <h1 className='font-semibold text-4xl'>MANAGE CLASSES</h1>
                 <div className='p-[2px] w-[450px] mx-auto mt-2 bg-[#EA4C24]'></div>
             </div>
-            <div className="container px-5 mx-auto w-[1000px]">
+            <div className="container px-5 mx-auto my-10 w-[1000px]">
                 <div className="w-full mx-auto overflow-auto">
-                    <table className="table-auto w-full text-left whitespace-no-wrap">
+                    <table className="table-auto w-full text-left whitespace-no-wrap overflow-hidden">
                         <thead>
                             <tr>
                                 <th className="w-10 title-font tracking-wider font-medium text-white text-sm text-center bg-[#EA4C24] rounded-tl-lg">#</th>

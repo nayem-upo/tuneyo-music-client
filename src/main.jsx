@@ -58,7 +58,7 @@ const router = createBrowserRouter([
       },
       {
         path: "/studentdashboard",
-        element: <Private><StudentDashboard></StudentDashboard></Private>,
+        element: <Private><StudentRoute><StudentDashboard></StudentDashboard></StudentRoute></Private>,
         children: [
           {
             path: "/studentdashboard/selected",
@@ -66,26 +66,26 @@ const router = createBrowserRouter([
           },
           {
             path: "/studentdashboard/enroled",
-            element: <EnrolledClasses></EnrolledClasses>
+            element: <StudentRoute><EnrolledClasses></EnrolledClasses></StudentRoute>
           },
           {
             path: "/studentdashboard/payment",
-            element: <Payment></Payment>
+            element: <StudentRoute><Payment></Payment></StudentRoute>
           },
           {
             path: "/studentdashboard/history",
-            element: <PaymentHistory></PaymentHistory>
+            element: <StudentRoute><PaymentHistory></PaymentHistory></StudentRoute>
           },
           {
             path: "/studentdashboard/payment/:id",
-            element: <Private><Payment></Payment></Private>,
+            element: <Private><StudentRoute><Payment></Payment></StudentRoute></Private>,
             loader: ({ params }) => fetch(`http://localhost:5000/selectedclasses/${params.id}`)
           },
         ]
       },
       {
         path: "/instructordashboard",
-        element: <Private><InstructorDashboard></InstructorDashboard></Private>,
+        element: <Private><InstructorRoute><InstructorDashboard></InstructorDashboard></InstructorRoute></Private>,
         children: [
           {
             path: "/instructordashboard/addclass",
@@ -93,18 +93,18 @@ const router = createBrowserRouter([
           },
           {
             path: "/instructordashboard/enroled",
-            element: <MyAddedClasses></MyAddedClasses>
+            element: <InstructorRoute><MyAddedClasses></MyAddedClasses></InstructorRoute>
           },
           {
             path: "/instructordashboard/update/:id",
-            element: <UpdateClass></UpdateClass>,
+            element: <InstructorRoute><UpdateClass></UpdateClass></InstructorRoute>,
             loader: ({ params }) => fetch(`http://localhost:5000/classes/toupdate/${params.id}`)
           },
         ]
       },
       {
         path: "/admindashboard",
-        element: <Private><AdminDashboard></AdminDashboard></Private>,
+        element: <Private><AdminRoute><AdminDashboard></AdminDashboard></AdminRoute></Private>,
         children: [
           {
             path: "/admindashboard/manageclasses",

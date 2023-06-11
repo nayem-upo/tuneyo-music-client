@@ -2,6 +2,7 @@ import { CardElement, useElements, useStripe } from "@stripe/react-stripe-js";
 import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../Authenticate/AuthProvider";
 import Swal from "sweetalert2";
+import { useNavigate } from "react-router-dom";
 
 
 const CheckOut = ({ selectedClass }) => {
@@ -12,6 +13,7 @@ const CheckOut = ({ selectedClass }) => {
     const [error, setError] = useState('');
     const [clientSecret, setClientSecret] = useState('');
     const [processing, setProcessing] = useState(false);
+    const navigate = useNavigate();
 
     useEffect(() => {
         const fetchClientSecret = async () => {
@@ -99,6 +101,7 @@ const CheckOut = ({ selectedClass }) => {
                         if (data.acknowledged) {
                             setError("")
                             Swal.fire('Payment Successful. Thank You!')
+                            navigate("/studentdashboard/history")
                         }
                     })
 

@@ -8,6 +8,8 @@ const AddClass = () => {
     const { register, handleSubmit, watch, formState: { errors } } = useForm();
     const handleAddCard = (data) => {
         const { _id, className, classImage, instructorName, instructorEmail, availableSeats, price } = data;
+        
+
         const newClass = {
             className,
             classImage,
@@ -30,7 +32,6 @@ const AddClass = () => {
             .then(data => {
                 console.log(data);
                 if (data.insertedId) {
-                    console.log(data);
                     Swal.fire({
                         title: 'Success!',
                         text: 'Class added successfully',
@@ -52,7 +53,7 @@ const AddClass = () => {
                 <form onSubmit={handleSubmit(handleAddCard)} className="w-[650px] mx-auto">
                     <div className="relative mb-4 text-left">
                         <label htmlFor="name" className="text-lg leading-7 font-semibold text-gray-600">Class name</label>
-                        <input className='bg-[#ffffff] w-full h-10 mx-auto ps-3 outline-none' placeholder='Class name ( Please do not use more than one space or Tab! )' {...register("className", { required: true })} />
+                        <input className='bg-[#ffffff] w-full h-10 mx-auto ps-3 outline-none' placeholder='Class name ( Please do not use here Tab key! )' {...register("className", { required: true })} />
                         {errors.className && <span className='text-red-600'>This field is required</span>}
                     </div>
                     <div className="relative mb-4 text-left flex justify-between gap-4">

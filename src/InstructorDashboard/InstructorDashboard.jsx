@@ -1,3 +1,5 @@
+import { faLandmark, faSquarePlus } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React from 'react';
 import { NavLink, Outlet } from 'react-router-dom';
 
@@ -18,8 +20,8 @@ const InstructorDashboard = () => {
                         <h1 className='text-center font-semibold text-xl'>Instructor Dashboard</h1>
                         <div className='p-[2px] w-[160px] mx-auto my-2 mb-5 bg-[#f1d1c9]'></div>
                         <div className='flex flex-col gap-3'>
-                            <li><NavLink to='/instructordashboard/addclass'>Add a Class</NavLink></li>
-                            <li><NavLink to="/instructordashboard/enroled">My Classes</NavLink></li>
+                            <li><NavLink to='/instructordashboard/addclass'><FontAwesomeIcon icon={faSquarePlus} style={{color: "#ffffff",}} />Add a Class</NavLink></li>
+                            <li><NavLink to="/instructordashboard/enroled"><FontAwesomeIcon icon={faLandmark} style={{color: "#ffffff",}} />My Classes</NavLink></li>
                         </div>
                     </ul>
                 </div>

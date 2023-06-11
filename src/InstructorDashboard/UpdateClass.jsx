@@ -10,7 +10,19 @@ const UpdateClass = () => {
     const { _id, status, feedback } = useLoaderData();
     const handleUpdateCard = (data) => {
         const { className, classImage, availableSeats, price } = data;
-        console.log(status, feedback);
+        const classNameRegex = /^[^\t]+$/;
+        if (!className.match(classNameRegex)) {
+            Swal.fire({
+                title: 'Please do not use here Tab key',
+                showClass: {
+                    popup: 'animate__animated animate__fadeInDown'
+                },
+                hideClass: {
+                    popup: 'animate__animated animate__fadeOutUp'
+                }
+            })
+            return;
+        }
         const updatedClass = {
             className,
             classImage,
@@ -49,7 +61,7 @@ const UpdateClass = () => {
                 <form onSubmit={handleSubmit(handleUpdateCard)} className="w-[650px] mx-auto">
                     <div className="relative mb-4 text-left">
                         <label htmlFor="name" className="text-lg leading-7 font-semibold text-gray-600">Class name</label>
-                        <input className='bg-[#ffffff] w-full h-10 mx-auto ps-3 outline-none' placeholder='Class name' {...register("className", { required: true })} />
+                        <input className='bg-[#ffffff] w-full h-10 mx-auto ps-3 outline-none' placeholder='Class name ( Please do not use here Tab key! )' {...register("className", { required: true })} />
                         {errors.className && <span className='text-red-600'>This field is required</span>}
                     </div>
                     <div className="relative mb-4 text-left flex justify-between gap-4">
