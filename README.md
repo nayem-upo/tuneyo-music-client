@@ -1,6 +1,6 @@
 "# b712-summer-camp-client-side-nayem-upo" 
 # Project Title
-**TuneYo- The music school**
+## TuneYo- The music school
 
 ## List of some key features and functionalities the project:
 
