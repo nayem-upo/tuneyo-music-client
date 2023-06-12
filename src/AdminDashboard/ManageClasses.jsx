@@ -11,7 +11,7 @@ const ManageClasses = () => {
         <div>
             <div className='text-center my-10'>
                 <h1 className='font-semibold md:text-4xl text-xl'>MANAGE CLASSES</h1>
-                <div className='p-[2px] w-[300px] md:w-[450px] mx-auto mt-2 bg-[#EA4C24]'></div>
+                <div className='p-[2px] w-[300px] md:w-[450px] mx-auto mt-2 bg-[#EA4C24]'>Total Classes: {allclasses.length}</div>
             </div>
             <div className="container px-5 mx-auto my-10 md:w-[1000px]">
                 <div className="md:w-full mx-auto">

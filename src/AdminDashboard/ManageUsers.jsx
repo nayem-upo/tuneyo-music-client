@@ -15,7 +15,7 @@ const ManageUsers = () => {
             </div>
             <section className="text-gray-600 w-[850px] body-font mb-10 bg-white rounded-sm p-5">
                 <div className='flex justify-between mx-7 uppercase my-5 items-center'>
-                    <h1 className='text-2xl font-semibold'>Total Selected Classes: {users.length}</h1>
+                    <h1 className='text-2xl font-semibold'>Total Users: {users.length}</h1>
                 </div>
                 <div className="container px-5 mx-auto">
                     <div className="w-full mx-auto overflow-auto">
