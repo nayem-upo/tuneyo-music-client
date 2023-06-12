@@ -13,7 +13,7 @@ const MyAddedClasses = () => {
         <div className='w-full'>
             <div>
                 <div className='text-center'>
-                    <h1 className='font-semibold text-4xl'>MY ADDED CLASSES</h1>
+                    <h1 className='font-semibold text-4xl md:mt-10'>MY ADDED CLASSES</h1>
                     <div className='p-[2px] w-[450px] mx-auto mt-2 bg-[#EA4C24]'></div>
                 </div>
                 <section className="text-gray-600 body-font w-[800px] mb-10 bg-white rounded-sm p-5">
