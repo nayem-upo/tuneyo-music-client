@@ -25,7 +25,7 @@ const AuthProvider = ({ children }) => {
         setTheme(newTheme);
         localStorage.setItem("theme", JSON.stringify(newTheme));
     };
-    
+
     useEffect(() => {
         fetch('https://tuneyo-server.vercel.app/users')
             .then(res => res.json())
