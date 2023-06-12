@@ -177,6 +177,10 @@ const Header = () => {
                     </ul>
                 </div>
             </div>
+            {
+                user && !filteredUser?.role &&
+                <p className='font-semibold text-center text-red-600'>Please reload until the dashboard is visible in the navigation bar!</p>
+            }
         </div>
     );
 };
