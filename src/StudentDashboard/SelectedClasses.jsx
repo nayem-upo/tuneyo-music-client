@@ -80,7 +80,7 @@ const SelectedClasses = () => {
                                 </tbody>
                             </table>
                             {
-                                selectedClasses.length === 0 &&
+                                onlySelected.length === 0 &&
                                 <p className='w-full text-center py-5 text-2xl font-semibold text-[#EA4C24]'>You have no selected class!</p>
                             }
                         </div>

@@ -7,7 +7,7 @@ import axios from 'axios';
 import PopularClassCard from './PopularClassCard';
 
 const PopularClasses = () => {
-    const { theme } = useContext(AuthContext)
+    const { theme, user } = useContext(AuthContext)
 
     const { data: allClass = [], refetch } = useQuery(['allClass'], async () => {
         try {
@@ -17,8 +17,8 @@ const PopularClasses = () => {
             console.error(error);
         }
     });
-    const sortedData = allClass.sort((a, b) => b.enrolled - a.enrolled);
-
+    const approvedClasses = allClass.filter(a => a.status === "approved")
+    const sortedData = approvedClasses.sort((a, b) => b.enrolled - a.enrolled);
 
     return (
         <div className={`${theme ? "dark" : ""}`}>

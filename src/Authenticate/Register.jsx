@@ -37,7 +37,7 @@ const Register = () => {
                     updateProfile(auth.currentUser, {
                         displayName: name, photoURL: photo, role: "user"
                     }).then(() => {
-                        const saveUser = { name: name, email: email, role: "user" }
+                        const saveUser = { name: name, email: email, role: "user", image: photo }
                         fetch('https://tuneyo-server.vercel.app/users', {
                             method: 'POST',
                             headers: {
@@ -75,7 +75,7 @@ const Register = () => {
                 setError("")
                 setSuccess("Login Successfull")
                 const user = result.user;
-                const saveUser = { name: user.displayName, email: user.email, role: "user" }
+                const saveUser = { name: user.displayName, email: user.email, role: "user", image: user.photoURL }
                 fetch('https://tuneyo-server.vercel.app/users', {
                     method: 'POST',
                     headers: {

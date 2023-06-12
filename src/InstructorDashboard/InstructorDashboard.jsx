@@ -1,4 +1,4 @@
-import { faLandmark, faSquarePlus } from '@fortawesome/free-solid-svg-icons';
+import { faCircleChevronDown, faLandmark, faSquarePlus } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React from 'react';
 import { NavLink, Outlet } from 'react-router-dom';
@@ -6,13 +6,13 @@ import { NavLink, Outlet } from 'react-router-dom';
 const InstructorDashboard = () => {
     return (
         <div className='pt-[66.5px]'>
+            <label htmlFor="my-drawer-2" className="drawer h-8 rounded-lg cursor-pointer lg:hidden text-white font-semibold px-2"><FontAwesomeIcon className='text-5xl cursor-pointer' icon={faCircleChevronDown} rotation={270} style={{color: "#EA4C24",}} /></label>
             <div className="drawer lg:drawer-open">
                 <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
                 <div className="drawer-content flex flex-col items-center justify-center">
                     <div>
                         <Outlet></Outlet>
                     </div>
-                    <label htmlFor="my-drawer-2" className="drawer lg:hidden">drawer</label>
                 </div>
                 <div className="drawer-side">
                     <label htmlFor="my-drawer-2" className="drawer-overlay"></label>
