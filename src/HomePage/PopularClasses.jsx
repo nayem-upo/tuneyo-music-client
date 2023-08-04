@@ -17,6 +17,7 @@ const PopularClasses = () => {
             console.error(error);
         }
     });
+    
     const approvedClasses = allClass.filter(a => a.status === "approved")
     const sortedData = approvedClasses.sort((a, b) => b.enrolled - a.enrolled);
 

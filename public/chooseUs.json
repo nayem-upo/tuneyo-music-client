@@ -1,0 +1,26 @@
+[
+    {
+        "id": 1,
+        "imageLink": "https://icones.pro/wp-content/uploads/2021/12/icone-de-microphone-orange.png",
+        "number": "Free Equipment",
+        "text": "Lorem ipsum dolor sit amet, consectetur."
+    },
+    {
+        "id": 2,
+        "imageLink": "https://icones.pro/wp-content/uploads/2021/04/icone-d-ordinateur-orange.png",
+        "number": "High Tech",
+        "text": "Lorem ipsum dolor sit amet, consectetur."
+    },
+    {
+        "id": 4,
+        "imageLink": "https://cdn-icons-png.flaticon.com/512/7870/7870592.png",
+        "number": "Expert Teacher",
+        "text": "Lorem ipsum dolor sit amet, consectetur."
+    },
+    {
+        "id": 3,
+        "imageLink": "https://cdn-icons-png.flaticon.com/512/1632/1632454.png",
+        "number": "Music Studio",
+        "text": "Lorem ipsum dolor sit amet, consectetur."
+    }
+]

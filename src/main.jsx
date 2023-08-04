@@ -31,6 +31,8 @@ import ManageClasses from './AdminDashboard/ManageClasses';
 import ManageUsers from './AdminDashboard/ManageUsers';
 import AdminRoute from './Authenticate/Routes/AdminRoute';
 import ErrorPage from './Authenticate/Routes/ErrorPage';
+import AboutUs from './AboutUsPage/AboutUs';
+import Contact from './ContactPage/Contact';
 
 const router = createBrowserRouter([
   {
@@ -53,6 +55,14 @@ const router = createBrowserRouter([
       {
         path: "/instructors",
         element: <Instructors></Instructors>
+      },
+      {
+        path: "/contact",
+        element: <Contact></Contact>
+      },
+      {
+        path: "/about",
+        element: <AboutUs></AboutUs>
       },
       {
         path: "/classes",

@@ -18,14 +18,15 @@ const JoinClassSectoin = () => {
                     <progress className="progress progress-error md:w-[530px] mb-7" value="90" max="100"></progress>
                     <label className='text-xl font-semibold pb-2' htmlFor="ability">Student Satisfaction</label>
                     <progress className="progress progress-error md:w-[530px]" value="80" max="100"></progress>
-                    <Link to="/classes">
-                        <motion.button
-                            whileHover={{ scale: 1.1 }}
-                            className='bg-[#EA4C24] w-[150px] mt-7 hover:bg-[#ffffff] duration-300 border-2 border-[#EA4C24] hover:text-[#EA4C24] py-3 px-6 rounded-lg text-white font-semibold'
-                        >
+                    <motion.button
+                        whileHover={{ scale: 1.1 }}
+                        className='bg-[#EA4C24] w-[150px] mt-7 hover:bg-[#ffffff] duration-300 border-2 border-[#EA4C24] hover:text-[#EA4C24] py-3 px-6 rounded-lg text-white font-semibold'
+                    >
+                        <Link to="/classes">
                             Learn More
-                        </motion.button>
-                    </Link>
+                        </Link>
+                    </motion.button>
+
                 </div>
                 <div className='flex md:w-1/2 gap-7 items-center'>
                     <motion.img

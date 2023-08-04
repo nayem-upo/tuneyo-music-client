@@ -17,6 +17,8 @@ const Header = () => {
                         </label>
                         <ul tabIndex={0} className="menu menu-sm dropdown-content mt-3 p-2 shadow bg-white rounded-box w-52">
                             <li><NavLink className={({ isActive }) => isActive ? "text-[#EA4C24] font-semibold" : "hover:text-[#EA4C24] duration-300 font-semibold"} to="/">Home</NavLink></li>
+                            <li><NavLink className={({ isActive }) => isActive ? "text-[#EA4C24] font-semibold" : "hover:text-[#EA4C24] duration-300 font-semibold"} to="/contact">Contact</NavLink></li>
+                            <li><NavLink className={({ isActive }) => isActive ? "text-[#EA4C24] font-semibold" : "hover:text-[#EA4C24] duration-300 font-semibold"} to="/about">About</NavLink></li>
                             <li><NavLink className={({ isActive }) => isActive ? "text-[#EA4C24] font-semibold" : "hover:text-[#EA4C24] duration-300 font-semibold"} to="/instructors">Instructors</NavLink></li>
                             <li><NavLink className={({ isActive }) => isActive ? "text-[#EA4C24] font-semibold" : "hover:text-[#EA4C24] duration-300 font-semibold"} to="/classes">Classes</NavLink></li>
                             {filteredUser?.role === "user" &&
@@ -100,6 +102,8 @@ const Header = () => {
                 <div className="navbar-center hidden lg:flex">
                     <ul className="flex gap-10 items-center text-lg text-white bg-blend-multiply">
                         <li><NavLink className={({ isActive }) => isActive ? "text-[#EA4C24] font-semibold" : "hover:text-[#EA4C24] duration-300 font-semibold"} to="/">Home</NavLink></li>
+                        <li><NavLink className={({ isActive }) => isActive ? "text-[#EA4C24] font-semibold" : "hover:text-[#EA4C24] duration-300 font-semibold"} to="/contact">Contact</NavLink></li>
+                        <li><NavLink className={({ isActive }) => isActive ? "text-[#EA4C24] font-semibold" : "hover:text-[#EA4C24] duration-300 font-semibold"} to="/about">About</NavLink></li>
                         <li><NavLink className={({ isActive }) => isActive ? "text-[#EA4C24] font-semibold" : "hover:text-[#EA4C24] duration-300 font-semibold"} to="/instructors">Instructors</NavLink></li>
                         <li><NavLink className={({ isActive }) => isActive ? "text-[#EA4C24] font-semibold" : "hover:text-[#EA4C24] duration-300 font-semibold"} to="/classes">Classes</NavLink></li>
                         {/* changing theme statey */}

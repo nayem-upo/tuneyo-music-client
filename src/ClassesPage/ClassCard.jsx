@@ -100,7 +100,7 @@ const ClassCard = ({ clasS, theme }) => {
                 <div>
                     <motion.div
                         id={`card-${_id}`}
-                        initial={{ opacity: 0, y: 50 }}
+                        initial={{ opacity: 1, y: 50 }}
                         animate={isScrolled ? { opacity: 1, y: 0 } : {}}
                         transition={{ duration: 0.5 }}
                         className={`${availableSeats < 1 ? 'bg-red-300 shadow-md shadow-red-700' : 'bg-white dark:shadow-[#ffffff23] shadow-xl rounded-b-md w-[320px]'}`}

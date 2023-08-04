@@ -18,6 +18,16 @@
   -moz-osx-font-smoothing: grayscale;
   -webkit-text-size-adjust: 100%;
 }
+::placeholder {
+  color: #ffffff;
+}
+.xero{
+  place-items: initial;
+}
+
+#inputID::placeholder {
+  color: #ffffff;
+}
 
 /* 
 a {

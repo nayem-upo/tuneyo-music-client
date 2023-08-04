@@ -27,7 +27,7 @@ const AuthProvider = ({ children }) => {
     };
 
     useEffect(() => {
-        fetch('https://tuneyo-server.vercel.app/users')
+        fetch(' ')
             .then(res => res.json())
             .then(data => setAllUsers(data))
     }, [user])
