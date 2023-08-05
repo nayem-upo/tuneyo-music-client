@@ -27,12 +27,11 @@ const AuthProvider = ({ children }) => {
     };
 
     useEffect(() => {
-        fetch(' ')
+        fetch('https://tuneyo-server.vercel.app/users')
             .then(res => res.json())
             .then(data => setAllUsers(data))
     }, [user])
     const filteredUser = allUsers.find(userr => userr.email === user?.email)
-
 
     const createUser = (email, password) => {
         return createUserWithEmailAndPassword(auth, email, password);
